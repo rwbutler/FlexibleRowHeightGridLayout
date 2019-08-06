@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FlexibleRowHeightGridLayout_Example' do
+  pod 'FlexibleRowHeightGridLayout', :path => '../'
+
+  target 'FlexibleRowHeightGridLayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

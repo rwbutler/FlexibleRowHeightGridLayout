@@ -1,0 +1,6 @@
+framework module FlexibleRowHeightGridLayout {
+  umbrella header "FlexibleRowHeightGridLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}

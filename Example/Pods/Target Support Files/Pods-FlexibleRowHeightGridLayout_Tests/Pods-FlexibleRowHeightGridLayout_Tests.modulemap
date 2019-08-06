@@ -1,0 +1,6 @@
+framework module Pods_FlexibleRowHeightGridLayout_Tests {
+  umbrella header "Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

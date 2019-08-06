@@ -1,0 +1,16 @@
+PODS:
+  - FlexibleRowHeightGridLayout (0.1.0)
+
+DEPENDENCIES:
+  - FlexibleRowHeightGridLayout (from `../`)
+
+EXTERNAL SOURCES:
+  FlexibleRowHeightGridLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FlexibleRowHeightGridLayout: 89d6c3b26582ee66452caaf91ba28df546e5c016
+
+PODFILE CHECKSUM: 8ad29a86252c89435efc5698b3ffad5b7d70ad8b
+
+COCOAPODS: 1.7.1

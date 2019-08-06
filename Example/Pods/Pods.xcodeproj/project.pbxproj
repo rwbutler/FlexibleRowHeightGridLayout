@@ -1,0 +1,785 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1304BE9E22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */; };
+		136F2EE622F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */; };
+		2AA233631C77D733E7C44633ECAD2F45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		498768F77D51D9C066A853A680AC6E39 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C6F15B758404603BF8ADD887BB6957 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m */; };
+		4A136FCD788053DEA2B967E448A7498A /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2227709E192D3F19952FECA813C44EDE /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E261B956301F4612AE65A53C0EFC2AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		642E2FA881EFBAB6D978B8B49BFC341F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		A57F0B4DABF7CD3C4238A0CB6C3C4A6E /* Pods-FlexibleRowHeightGridLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 620A615389B787996CC51EEBE19A1996 /* Pods-FlexibleRowHeightGridLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C16B0295F704891AE664750B8B945DAA /* Pods-FlexibleRowHeightGridLayout_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A271B5BEB801BB953D5BD9B22F5BE /* Pods-FlexibleRowHeightGridLayout_Tests-dummy.m */; };
+		D90D1B01921DFCC00F97E5EEB87FA3E8 /* FlexibleRowHeightGridLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DA97AA8D4E7E5C6450912C417A913 /* FlexibleRowHeightGridLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4E13D14C56E986F7D5182E5BDA2E818 /* FlexibleRowHeightGridLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A99464848F90A7755698DB4ADD658F6 /* FlexibleRowHeightGridLayout-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08DC865419DE7ABB5F199A9197F89353 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E884D0E9D11170006BD05C37E24A71BB;
+			remoteInfo = "Pods-FlexibleRowHeightGridLayout_Example";
+		};
+		F340318513EE2D98EBFF77A864BA6B03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C13372BE1D44015DD4833AD6D06DA678;
+			remoteInfo = FlexibleRowHeightGridLayout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C1A66A5DDEE32E73FA159A7AA12B8F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0E5A918C4C04FCCA7E99DE8CE3876443 /* Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleRowHeightGridLayout.swift; sourceTree = "<group>"; };
+		136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleRowHeightGridLayoutDelegate.swift; sourceTree = "<group>"; };
+		146642ABC3901C052EDDC5CB886EE8A7 /* Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		166DA97AA8D4E7E5C6450912C417A913 /* FlexibleRowHeightGridLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlexibleRowHeightGridLayout-umbrella.h"; sourceTree = "<group>"; };
+		2227709E192D3F19952FECA813C44EDE /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h"; sourceTree = "<group>"; };
+		2E9A271B5BEB801BB953D5BD9B22F5BE /* Pods-FlexibleRowHeightGridLayout_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FlexibleRowHeightGridLayout_Tests-dummy.m"; sourceTree = "<group>"; };
+		4DD2D8117E5B18C8F9664894A6E38E74 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		50E45DB391A215FEB1EEF9D7CB5395EB /* Pods-FlexibleRowHeightGridLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlexibleRowHeightGridLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
+		5A99464848F90A7755698DB4ADD658F6 /* FlexibleRowHeightGridLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FlexibleRowHeightGridLayout-dummy.m"; sourceTree = "<group>"; };
+		61815809EACCB9BD11A707B592BA5798 /* Pods-FlexibleRowHeightGridLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FlexibleRowHeightGridLayout_Example.modulemap"; sourceTree = "<group>"; };
+		620A615389B787996CC51EEBE19A1996 /* Pods-FlexibleRowHeightGridLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlexibleRowHeightGridLayout_Example-umbrella.h"; sourceTree = "<group>"; };
+		6F83DC0BC5308DD94C19F9E00FFD1CB8 /* FlexibleRowHeightGridLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FlexibleRowHeightGridLayout.modulemap; sourceTree = "<group>"; };
+		76C6F15B758404603BF8ADD887BB6957 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FlexibleRowHeightGridLayout_Example-dummy.m"; sourceTree = "<group>"; };
+		7CEB7968BD84DBEBDDB919139D4C7E6D /* Pods_FlexibleRowHeightGridLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexibleRowHeightGridLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F3F25F2FCCD3D8FEC79E10FCEA8BB44 /* FlexibleRowHeightGridLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlexibleRowHeightGridLayout-prefix.pch"; sourceTree = "<group>"; };
+		99D8B9948D2C885B0A9D79C168ABFF6D /* Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		9AB324DFD3587C76A6A7BA254851118B /* Pods-FlexibleRowHeightGridLayout_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FlexibleRowHeightGridLayout_Tests.modulemap"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A41FA7223B59732030487A8EFDEF0F86 /* Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A9A35AFB9BE866798BAFFDC027E5650B /* FlexibleRowHeightGridLayout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FlexibleRowHeightGridLayout-Info.plist"; sourceTree = "<group>"; };
+		BC837C4178968B25B8CFC065E00F69A9 /* FlexibleRowHeightGridLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlexibleRowHeightGridLayout.xcconfig; sourceTree = "<group>"; };
+		C1148163F66C2F3B674ADE98EA83BC57 /* Pods-FlexibleRowHeightGridLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlexibleRowHeightGridLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C5FDC69FCCFB2481C9E1D99EEC0FBAFB /* FlexibleRowHeightGridLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlexibleRowHeightGridLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DAF371A0EA0675222763BC551EC934DA /* Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DC05B15465134F175909FEFF9F1C7CF2 /* FlexibleRowHeightGridLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FlexibleRowHeightGridLayout.podspec; sourceTree = "<group>"; tabWidth = 2; };
+		DEE74CA0E2741E352833724ACF90D9D4 /* Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		ECB26BB0153723708FD77737D3E6B75F /* Pods-FlexibleRowHeightGridLayout_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlexibleRowHeightGridLayout_Example-Info.plist"; sourceTree = "<group>"; };
+		EE83278B26B5F96EC6148FF1618CE7AC /* Pods_FlexibleRowHeightGridLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexibleRowHeightGridLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE90A558314459C72F1F09DEA1376ABA /* Pods-FlexibleRowHeightGridLayout_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlexibleRowHeightGridLayout_Tests-Info.plist"; sourceTree = "<group>"; };
+		F17B1BA65897DA42C55B6D3F00EF33D5 /* Pods-FlexibleRowHeightGridLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlexibleRowHeightGridLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40CE7D24D24E0CAFFD955E3300843995 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642E2FA881EFBAB6D978B8B49BFC341F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		814C7DB8BAF4FCBCEF1691D0496CA6AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AA233631C77D733E7C44633ECAD2F45 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB43B806C8541A934E1C5521BC6CC0EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E261B956301F4612AE65A53C0EFC2AC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1237CFED112EE17630B73C6CC3718D76 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				390CF4A03E8C738C5B3AEE076808E71C /* Pods-FlexibleRowHeightGridLayout_Example */,
+				B24FD2CE5947F6159174881DC27AF2D8 /* Pods-FlexibleRowHeightGridLayout_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		17F17DE22AA1C28295639DD31B691B2F /* FlexibleRowHeightGridLayout */ = {
+			isa = PBXGroup;
+			children = (
+				1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */,
+				136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */,
+				7D5928AD78D6F94E2FA57E6F1D21A0FD /* Pod */,
+				5885C618DA2F84B17169CD29AB9681D1 /* Support Files */,
+			);
+			name = FlexibleRowHeightGridLayout;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		390CF4A03E8C738C5B3AEE076808E71C /* Pods-FlexibleRowHeightGridLayout_Example */ = {
+			isa = PBXGroup;
+			children = (
+				61815809EACCB9BD11A707B592BA5798 /* Pods-FlexibleRowHeightGridLayout_Example.modulemap */,
+				DEE74CA0E2741E352833724ACF90D9D4 /* Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.markdown */,
+				0E5A918C4C04FCCA7E99DE8CE3876443 /* Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.plist */,
+				76C6F15B758404603BF8ADD887BB6957 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m */,
+				50E45DB391A215FEB1EEF9D7CB5395EB /* Pods-FlexibleRowHeightGridLayout_Example-frameworks.sh */,
+				ECB26BB0153723708FD77737D3E6B75F /* Pods-FlexibleRowHeightGridLayout_Example-Info.plist */,
+				620A615389B787996CC51EEBE19A1996 /* Pods-FlexibleRowHeightGridLayout_Example-umbrella.h */,
+				F17B1BA65897DA42C55B6D3F00EF33D5 /* Pods-FlexibleRowHeightGridLayout_Example.debug.xcconfig */,
+				C1148163F66C2F3B674ADE98EA83BC57 /* Pods-FlexibleRowHeightGridLayout_Example.release.xcconfig */,
+			);
+			name = "Pods-FlexibleRowHeightGridLayout_Example";
+			path = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Example";
+			sourceTree = "<group>";
+		};
+		5885C618DA2F84B17169CD29AB9681D1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F83DC0BC5308DD94C19F9E00FFD1CB8 /* FlexibleRowHeightGridLayout.modulemap */,
+				BC837C4178968B25B8CFC065E00F69A9 /* FlexibleRowHeightGridLayout.xcconfig */,
+				5A99464848F90A7755698DB4ADD658F6 /* FlexibleRowHeightGridLayout-dummy.m */,
+				A9A35AFB9BE866798BAFFDC027E5650B /* FlexibleRowHeightGridLayout-Info.plist */,
+				8F3F25F2FCCD3D8FEC79E10FCEA8BB44 /* FlexibleRowHeightGridLayout-prefix.pch */,
+				166DA97AA8D4E7E5C6450912C417A913 /* FlexibleRowHeightGridLayout-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/FlexibleRowHeightGridLayout";
+			sourceTree = "<group>";
+		};
+		7D5928AD78D6F94E2FA57E6F1D21A0FD /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				DC05B15465134F175909FEFF9F1C7CF2 /* FlexibleRowHeightGridLayout.podspec */,
+				0C1A66A5DDEE32E73FA159A7AA12B8F6 /* LICENSE */,
+				4DD2D8117E5B18C8F9664894A6E38E74 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A6CB9E13E5402A7240DD1BE78DA275ED /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17F17DE22AA1C28295639DD31B691B2F /* FlexibleRowHeightGridLayout */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B24FD2CE5947F6159174881DC27AF2D8 /* Pods-FlexibleRowHeightGridLayout_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9AB324DFD3587C76A6A7BA254851118B /* Pods-FlexibleRowHeightGridLayout_Tests.modulemap */,
+				DAF371A0EA0675222763BC551EC934DA /* Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.markdown */,
+				99D8B9948D2C885B0A9D79C168ABFF6D /* Pods-FlexibleRowHeightGridLayout_Tests-acknowledgements.plist */,
+				2E9A271B5BEB801BB953D5BD9B22F5BE /* Pods-FlexibleRowHeightGridLayout_Tests-dummy.m */,
+				EE90A558314459C72F1F09DEA1376ABA /* Pods-FlexibleRowHeightGridLayout_Tests-Info.plist */,
+				2227709E192D3F19952FECA813C44EDE /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h */,
+				A41FA7223B59732030487A8EFDEF0F86 /* Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig */,
+				146642ABC3901C052EDDC5CB886EE8A7 /* Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig */,
+			);
+			name = "Pods-FlexibleRowHeightGridLayout_Tests";
+			path = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				A6CB9E13E5402A7240DD1BE78DA275ED /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				EF6242C0A5E8767B0E916030C0A5CD08 /* Products */,
+				1237CFED112EE17630B73C6CC3718D76 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF6242C0A5E8767B0E916030C0A5CD08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5FDC69FCCFB2481C9E1D99EEC0FBAFB /* FlexibleRowHeightGridLayout.framework */,
+				EE83278B26B5F96EC6148FF1618CE7AC /* Pods_FlexibleRowHeightGridLayout_Example.framework */,
+				7CEB7968BD84DBEBDDB919139D4C7E6D /* Pods_FlexibleRowHeightGridLayout_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		42635947BF43A4FC1653C237D46757E7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D90D1B01921DFCC00F97E5EEB87FA3E8 /* FlexibleRowHeightGridLayout-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FD967235096EBD9227B9F08371404A4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A57F0B4DABF7CD3C4238A0CB6C3C4A6E /* Pods-FlexibleRowHeightGridLayout_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2C341A2DD057B594B5A6E6B184F0A0F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A136FCD788053DEA2B967E448A7498A /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C13372BE1D44015DD4833AD6D06DA678 /* FlexibleRowHeightGridLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9075F7AF23BD378A4A4B91C8AFDD8DF /* Build configuration list for PBXNativeTarget "FlexibleRowHeightGridLayout" */;
+			buildPhases = (
+				42635947BF43A4FC1653C237D46757E7 /* Headers */,
+				CE5FEBDBAE5AA69F602D62F2BFFBD703 /* Sources */,
+				814C7DB8BAF4FCBCEF1691D0496CA6AA /* Frameworks */,
+				4B785F01B860EA7046C2C7414D8BF126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexibleRowHeightGridLayout;
+			productName = FlexibleRowHeightGridLayout;
+			productReference = C5FDC69FCCFB2481C9E1D99EEC0FBAFB /* FlexibleRowHeightGridLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E884D0E9D11170006BD05C37E24A71BB /* Pods-FlexibleRowHeightGridLayout_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67A1BF9C94F34D38AB8F80DEF91801F4 /* Build configuration list for PBXNativeTarget "Pods-FlexibleRowHeightGridLayout_Example" */;
+			buildPhases = (
+				6FD967235096EBD9227B9F08371404A4 /* Headers */,
+				5FCA3DB5E9B343FA2E7BA5CE6CF803B6 /* Sources */,
+				40CE7D24D24E0CAFFD955E3300843995 /* Frameworks */,
+				DBE3EFE7F930C112D1299DB2BCD46068 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				727D5CDAA86DBE60772FAFA5B2BEE09D /* PBXTargetDependency */,
+			);
+			name = "Pods-FlexibleRowHeightGridLayout_Example";
+			productName = "Pods-FlexibleRowHeightGridLayout_Example";
+			productReference = EE83278B26B5F96EC6148FF1618CE7AC /* Pods_FlexibleRowHeightGridLayout_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F0E146FEB7CD4E4C2C4721E1E6307851 /* Pods-FlexibleRowHeightGridLayout_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59944C1CD0602ADFE6960066EACE3A6F /* Build configuration list for PBXNativeTarget "Pods-FlexibleRowHeightGridLayout_Tests" */;
+			buildPhases = (
+				F2C341A2DD057B594B5A6E6B184F0A0F /* Headers */,
+				6866116C08CD0B311AE8B3315749A553 /* Sources */,
+				FB43B806C8541A934E1C5521BC6CC0EB /* Frameworks */,
+				736E7B0D44CAAE3FE80C178A8F40043F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8824D71CC6B789E333A27419BE561B81 /* PBXTargetDependency */,
+			);
+			name = "Pods-FlexibleRowHeightGridLayout_Tests";
+			productName = "Pods-FlexibleRowHeightGridLayout_Tests";
+			productReference = 7CEB7968BD84DBEBDDB919139D4C7E6D /* Pods_FlexibleRowHeightGridLayout_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 1030;
+				TargetAttributes = {
+					C13372BE1D44015DD4833AD6D06DA678 = {
+						LastSwiftMigration = 1030;
+					};
+				};
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = EF6242C0A5E8767B0E916030C0A5CD08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C13372BE1D44015DD4833AD6D06DA678 /* FlexibleRowHeightGridLayout */,
+				E884D0E9D11170006BD05C37E24A71BB /* Pods-FlexibleRowHeightGridLayout_Example */,
+				F0E146FEB7CD4E4C2C4721E1E6307851 /* Pods-FlexibleRowHeightGridLayout_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B785F01B860EA7046C2C7414D8BF126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		736E7B0D44CAAE3FE80C178A8F40043F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBE3EFE7F930C112D1299DB2BCD46068 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FCA3DB5E9B343FA2E7BA5CE6CF803B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				498768F77D51D9C066A853A680AC6E39 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6866116C08CD0B311AE8B3315749A553 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C16B0295F704891AE664750B8B945DAA /* Pods-FlexibleRowHeightGridLayout_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE5FEBDBAE5AA69F602D62F2BFFBD703 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1304BE9E22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift in Sources */,
+				E4E13D14C56E986F7D5182E5BDA2E818 /* FlexibleRowHeightGridLayout-dummy.m in Sources */,
+				136F2EE622F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		727D5CDAA86DBE60772FAFA5B2BEE09D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlexibleRowHeightGridLayout;
+			target = C13372BE1D44015DD4833AD6D06DA678 /* FlexibleRowHeightGridLayout */;
+			targetProxy = F340318513EE2D98EBFF77A864BA6B03 /* PBXContainerItemProxy */;
+		};
+		8824D71CC6B789E333A27419BE561B81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-FlexibleRowHeightGridLayout_Example";
+			target = E884D0E9D11170006BD05C37E24A71BB /* Pods-FlexibleRowHeightGridLayout_Example */;
+			targetProxy = 08DC865419DE7ABB5F199A9197F89353 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		096106FD3E35C017C320054645F10774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC837C4178968B25B8CFC065E00F69A9 /* FlexibleRowHeightGridLayout.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout.modulemap";
+				PRODUCT_MODULE_NAME = FlexibleRowHeightGridLayout;
+				PRODUCT_NAME = FlexibleRowHeightGridLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		194B948AB64E98B00763D2CE98D5168E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC837C4178968B25B8CFC065E00F69A9 /* FlexibleRowHeightGridLayout.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FlexibleRowHeightGridLayout/FlexibleRowHeightGridLayout.modulemap";
+				PRODUCT_MODULE_NAME = FlexibleRowHeightGridLayout;
+				PRODUCT_NAME = FlexibleRowHeightGridLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		258036A6BD2D4CC53586A6C533FF9AF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A41FA7223B59732030487A8EFDEF0F86 /* Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests/Pods-FlexibleRowHeightGridLayout_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests/Pods-FlexibleRowHeightGridLayout_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3724C2614471680C0FCE238D03B709FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1148163F66C2F3B674ADE98EA83BC57 /* Pods-FlexibleRowHeightGridLayout_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Example/Pods-FlexibleRowHeightGridLayout_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Example/Pods-FlexibleRowHeightGridLayout_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6D3FF7ACCB3B43D7A731FA1E0F52D197 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F17B1BA65897DA42C55B6D3F00EF33D5 /* Pods-FlexibleRowHeightGridLayout_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Example/Pods-FlexibleRowHeightGridLayout_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Example/Pods-FlexibleRowHeightGridLayout_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7F016F6EF56599EF92FF10230CC985DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 146642ABC3901C052EDDC5CB886EE8A7 /* Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests/Pods-FlexibleRowHeightGridLayout_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests/Pods-FlexibleRowHeightGridLayout_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		F232B5ECA11A71BFA199A229B323F454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */,
+				F232B5ECA11A71BFA199A229B323F454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59944C1CD0602ADFE6960066EACE3A6F /* Build configuration list for PBXNativeTarget "Pods-FlexibleRowHeightGridLayout_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				258036A6BD2D4CC53586A6C533FF9AF0 /* Debug */,
+				7F016F6EF56599EF92FF10230CC985DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67A1BF9C94F34D38AB8F80DEF91801F4 /* Build configuration list for PBXNativeTarget "Pods-FlexibleRowHeightGridLayout_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D3FF7ACCB3B43D7A731FA1E0F52D197 /* Debug */,
+				3724C2614471680C0FCE238D03B709FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9075F7AF23BD378A4A4B91C8AFDD8DF /* Build configuration list for PBXNativeTarget "FlexibleRowHeightGridLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				194B948AB64E98B00763D2CE98D5168E /* Debug */,
+				096106FD3E35C017C320054645F10774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
