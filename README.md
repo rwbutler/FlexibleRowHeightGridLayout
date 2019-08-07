@@ -1,4 +1,4 @@
-# FlexibleRowHeightGridLayout
+![FlexibleRowHeightGridLayout](https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexible-row-banner.png)
 
 [![CI Status](https://img.shields.io/travis/rwbutler/FlexibleRowHeightGridLayout.svg?style=flat)](https://travis-ci.org/rwbutler/FlexibleRowHeightGridLayout)
 [![Version](https://img.shields.io/cocoapods/v/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
