@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FlexibleRowHeightGridLayout'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.swift_version    = '5.0'
   s.summary          = 'A UICollectionView grid layout designed to support Dynamic Type by allowing the height of each row to size to fit content.'
 
