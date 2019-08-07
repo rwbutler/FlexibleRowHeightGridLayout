@@ -13,7 +13,7 @@ A grid layout for UICollectionView whereby the UICollectionViewCells in each row
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Ross Butler' => 'github@rwbutler.com' }
   s.source           = { :git => 'https://github.com/rwbutler/FlexibleRowHeightGridLayout.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/rwbutler'
+  s.social_media_url = 'https://twitter.com/ross_w_butler'
 
   s.ios.deployment_target = '8.0'
 

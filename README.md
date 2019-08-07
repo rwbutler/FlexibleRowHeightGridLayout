@@ -13,6 +13,8 @@ FlexibleRowHeightGridLayout is a `UICollectionViewLayout` which lays out self-si
     <img width="414" height="438" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexible-row-heights.png" alt="Illustration of flexible row heights">
 </div>
 
+To learn more about how to use FlexibleRowHeightGridLayout make use of the table of contents below:
+
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
