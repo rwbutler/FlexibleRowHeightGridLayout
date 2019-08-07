@@ -7,6 +7,12 @@
 [![Platform](https://img.shields.io/cocoapods/p/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 
+FlexibleRowHeightGridLayout is a `UICollectionViewLayout` which lays out self-sizing cells in a grid and is designed to support accessibility, in particular, [Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically). It is designed to automatically re-layout with changes in text size on the device (`UIContentSizeCategory`). Row heights are flexible with this layout i.e. each row may have different height where the height of the row is determined by the tallest cell in the row so that the row height will always fit the content within the row.
+
+<div align="center">
+    <img src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexible-row-heights.png" alt="Illustration of flexible row heights">
+</div>
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
