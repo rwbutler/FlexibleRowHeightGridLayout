@@ -22,6 +22,7 @@ To learn more about how to use FlexibleRowHeightGridLayout make use of the table
 	- [Carthage](#carthage)
 	- [Swift Package Manager](#swift-package-manager)
 - [Usage](#usage)
+	- [FlexibleRowHeightGridLayoutDelegate](#flexiblerowheightgridlayoutdelegate)
 - [Author](#author)
 - [License](#license)
 - [Additional Software](#additional-software)
@@ -82,7 +83,7 @@ For more information [see here](https://github.com/Carthage/Carthage#quick-start
 
 ### Swift Package Manager
 
-Xcode 11 includes support for [Swift Package Manager](https://swift.org/package-manager/). In order to add FlexibleRowHeightGridLayout to to your project in Xcode 11, from the `File` menu select `Swift Packages` and then select `Add Package Dependency`.
+Xcode 11 includes support for [Swift Package Manager](https://swift.org/package-manager/). In order to add FlexibleRowHeightGridLayout to your project in Xcode 11, from the `File` menu select `Swift Packages` and then select `Add Package Dependency`.
 
 A dialogue will request the package repository URL which is:
 
@@ -94,6 +95,45 @@ After verifying the URL, Xcode will prompt you to select whether to pull a speci
 
 
 Proceed to the next step by where you will be asked to select the package product to integrate into a target. There will be a single package product named `FlexibleRowHeightGridLayout` which should be pre-selected. Ensure that your main app target is selected from the rightmost column of the dialog then click Finish to complete the integration.
+
+## Usage
+
+In order to have your `UICollectionView` make use of `FlexibleRowHeightGridLayout` to layout content you may either instantiate a new instance and assign it to the collection view's `collectionViewLayout` property if your collection view is defined in Interface Builder as follows:
+
+```
+let layout = FlexibleRowHeightGridLayout()
+layout.delegate = self
+collectionView.collectionViewLayout = layout
+// Following line is only required if content has already been loaded before collectionViewLayout property set.
+collectionView.reloadData()
+```
+
+Or, if your `UICollectionView` is instantiated programmatically then you may pass the layout to the `UICollectionView`'s initializer:
+
+```
+let layout = FlexibleRowHeightGridLayout()
+layout.delegate = self
+let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+```
+
+Notice that in both cases you are required to provide an implementation of the layout's delegate -`FlexibleRowHeightGridLayoutDelegate`.
+
+### FlexibleRowHeightGridLayoutDelegate
+
+The delegate defines two methods which must be implemented in order to allow `FlexibleRowHeightGridLayout` to layout items correctly. These are:
+
+* `func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath) -> CGFloat`
+
+Should return the height of the item for the given `IndexPath`. Using this information the layout is able to calculate the correct height for the row. When calculating the height of text, you find it useful to make use of `NSString`'s [func boundingRect(with size: options: attributes: context:) -> CGRect](https://developer.apple.com/documentation/foundation/nsstring/1524729-boundingrect) function as follows:
+
+```
+let constraintRect = CGSize(width: columnWidth, height: .greatestFiniteMagnitude)
+let textHeight = "Some text".boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil).height
+```
+    
+* `func numberOfColumns(for size: CGSize) -> Int`
+
+Should return the number of columns in the `UICollectionView`'s grid when the `UICollectionView` is of the specified size. For example, the `UICollectionView` may have larger bounds when the device is in landscape and therefore you may want your `UICollectionView` to have 4 columns when the device is in landscape orientation and only 3 when in portrait.
 
 ## Author
 
