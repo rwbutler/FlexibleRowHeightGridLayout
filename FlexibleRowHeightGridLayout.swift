@@ -150,9 +150,6 @@ private extension FlexibleRowHeightGridLayout {
     }
     
     private func updateLayoutAttributes(for collectionView: UICollectionView) {
-        
-        // Set up state
-        var column = 0
         layoutAttributes = [] // Empty existing attributes.
         
         // Compute properties needed to determine layout attributes.
@@ -170,12 +167,13 @@ private extension FlexibleRowHeightGridLayout {
         
         // Request height for item in section.
         let itemsInSection = collectionView.numberOfItems(inSection: 0)
-        for item in 0..<itemsInSection {
-            let indexPath = IndexPath(item: item, section: 0)
+        for itemIdx in 0..<itemsInSection {
+            let columnIdx = itemIdx % numberOfColumns
+            let indexPath = IndexPath(item: itemIdx, section: 0)
             let itemHeight = delegate?.collectionView(collectionView, heightForItemAt: indexPath) ?? 0
             
             // Calculate maximum height in row (so far).
-            let neighbors = neighboringIndicesLessThan(index: item, itemsPerRow: numberOfColumns)
+            let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
             let itemHeightsInRow = neighbors.map { layoutAttributes[$0].frame.height } + [itemHeight]
             let maxItemHeightInRow = itemHeightsInRow.reduce(0.0) { (maxValue, nextValue) in
                 return (nextValue > maxValue) ? nextValue : maxValue
@@ -183,7 +181,7 @@ private extension FlexibleRowHeightGridLayout {
             
             // Update the current UICollectionViewCell frame.
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            let frame = CGRect(x: xOffset[column], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
+            let frame = CGRect(x: xOffset[columnIdx], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
             attributes.frame = frame
             layoutAttributes.append(attributes)
             
@@ -196,17 +194,15 @@ private extension FlexibleRowHeightGridLayout {
                 layoutAttributes[neighbor] = attributes
             }
             
-            // Update column counter.
-            if column < (numberOfColumns - 1) {
-                column += 1
-            } else {
-                column = 0
+            // Update yOffset on last item in row.
+            let isLastColumn = (columnIdx == (numberOfColumns - 1))
+            if isLastColumn {
                 yOffset += maxItemHeightInRow
             }
             
             // Set content height on reaching the last item.
-            if item == itemsInSection - 1 {
-                if (item + 1) % numberOfColumns != 0 { // Zero-based index.
+            if itemIdx == itemsInSection - 1 {
+                if (itemIdx + 1) % numberOfColumns != 0 { // Zero-based index.
                     contentHeight = yOffset + frame.height
                 } else {
                     contentHeight = yOffset
