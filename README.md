@@ -23,6 +23,7 @@ To learn more about how to use FlexibleRowHeightGridLayout make use of the table
 	- [Swift Package Manager](#swift-package-manager)
 - [Usage](#usage)
 	- [FlexibleRowHeightGridLayoutDelegate](#flexiblerowheightgridlayoutdelegate)
+- [FAQs](#faqs)
 - [Author](#author)
 - [License](#license)
 - [Additional Software](#additional-software)
@@ -33,6 +34,7 @@ To learn more about how to use FlexibleRowHeightGridLayout make use of the table
 
 - [x] Grid layout supporting changes in text size - will automatically re-layout with changes in `UIContentSizeCategory` ([Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically)).
 - [x] Supports self-sizing [UICollectionViewCells](https://developer.apple.com/documentation/uikit/uicollectionviewcell).
+- [x] Supports sections including headers and / or footers.
 
 ## Requirements
 
@@ -134,6 +136,26 @@ let textHeight = "Some text".boundingRect(with: constraintRect, options: .usesLi
 * `func numberOfColumns(for size: CGSize) -> Int`
 
 Should return the number of columns in the `UICollectionView`'s grid when the `UICollectionView` is of the specified size. For example, the `UICollectionView` may have larger bounds when the device is in landscape and therefore you may want your `UICollectionView` to have 4 columns when the device is in landscape orientation and only 3 when in portrait.
+
+There are another two delegate methods which may optionally be implemented should you wish to include a header and / or footer as part of your UICollectionView:
+
+* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForHeaderInSection section: Int) -> CGFloat`
+
+Should return the height of the header in your UICollectionView. If the value returned from this function is zero than no header will be added.
+
+* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForFooterInSection section: Int) -> CGFloat`
+
+Should return the height of the footer in your UICollectionView. If the value returned from this function is zero than no footer will be added.
+
+## FAQS
+
+### Does this layout support section headers and / or footers?
+
+Yes, in order to add a section header and / or footer to your UICollectionView ensure that you provide an implementation for the two optional delegate methods in `FlexibleRowHeightGridLayoutDelegate`:
+
+ * `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForHeaderInSection section: Int) -> CGFloat`
+
+* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForFooterInSection section: Int) -> CGFloat`
 
 ## Author
 

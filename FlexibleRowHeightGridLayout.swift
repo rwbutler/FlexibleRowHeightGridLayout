@@ -96,6 +96,16 @@ private extension FlexibleRowHeightGridLayout {
                                        name: sizeCategoryChangedNotification, object: nil)
     }
     
+    /// Retrieves the number of columns in the grid layout.
+    private func columnCount(contentSize: CGSize) -> Int {
+        let defaultNumberOfColumns = 2
+        var numberOfColumns = delegate?.numberOfColumns(for: contentSize) ?? defaultNumberOfColumns
+        if numberOfColumns <= 0 {
+            numberOfColumns = defaultNumberOfColumns
+        }
+        return numberOfColumns
+    }
+    
     @objc func contentSizeDidChange(_ notification: Notification) {
         updateLayoutAttributes()
     }
@@ -153,62 +163,74 @@ private extension FlexibleRowHeightGridLayout {
         layoutAttributes = [] // Empty existing attributes.
         
         // Compute properties needed to determine layout attributes.
-        let defaultNumberOfColumns = 2
-        var numberOfColumns = delegate?.numberOfColumns(for: collectionView.bounds.size) ?? defaultNumberOfColumns
-        if numberOfColumns <= 0 {
-            numberOfColumns = defaultNumberOfColumns
-        }
+        let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth)
         var yOffset: CGFloat = 0
         
-        // This layout only supports 1 section currently
-        guard collectionView.numberOfSections == 1 else { return }
-        
-        // Request height for item in section.
-        let itemsInSection = collectionView.numberOfItems(inSection: 0)
-        for itemIdx in 0..<itemsInSection {
-            let columnIdx = itemIdx % numberOfColumns
-            let indexPath = IndexPath(item: itemIdx, section: 0)
-            let itemHeight = delegate?.collectionView(collectionView, heightForItemAt: indexPath) ?? 0
-            
-            // Calculate maximum height in row (so far).
-            let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
-            let itemHeightsInRow = neighbors.map { layoutAttributes[$0].frame.height } + [itemHeight]
-            let maxItemHeightInRow = itemHeightsInRow.reduce(0.0) { (maxValue, nextValue) in
-                return (nextValue > maxValue) ? nextValue : maxValue
+        let sectionsCount = collectionView.numberOfSections
+        for sectionIdx in 0..<sectionsCount {
+            // Layout headers.
+            let sectionIndexPath = IndexPath(item: 0, section: sectionIdx)
+            if let headerHeight = delegate?.collectionView?(collectionView, referenceHeightForHeaderInSection: sectionIdx), headerHeight > 0.0 {
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
+                let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: headerHeight)
+                attributes.frame = frame
+                layoutAttributes.append(attributes)
+                yOffset += headerHeight
             }
-            
-            // Update the current UICollectionViewCell frame.
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            let frame = CGRect(x: xOffset[columnIdx], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
-            attributes.frame = frame
-            layoutAttributes.append(attributes)
-            
-            // Update frames for other UICollectionViewCells in row.
-            for neighbor in neighbors {
-                let attributes = layoutAttributes[neighbor]
-                let frame = attributes.frame
-                let updatedSize = CGSize(width: frame.width, height: maxItemHeightInRow)
-                attributes.frame = CGRect(origin: frame.origin, size: updatedSize)
-                layoutAttributes[neighbor] = attributes
-            }
-            
-            // Update yOffset on last item in row.
-            let isLastColumn = (columnIdx == (numberOfColumns - 1))
-            if isLastColumn {
-                yOffset += maxItemHeightInRow
-            }
-            
-            // Set content height on reaching the last item.
-            if itemIdx == itemsInSection - 1 {
-                if (itemIdx + 1) % numberOfColumns != 0 { // Zero-based index.
-                    contentHeight = yOffset + frame.height
-                } else {
-                    contentHeight = yOffset
+            // Layout items in section.
+            let itemsInSection = collectionView.numberOfItems(inSection: sectionIdx)
+            for itemIdx in 0..<itemsInSection {
+                let columnIdx = itemIdx % numberOfColumns
+                let indexPath = IndexPath(item: itemIdx, section: sectionIdx)
+                let itemHeight = delegate?.collectionView(collectionView, heightForItemAt: indexPath) ?? 0
+                
+                // Calculate maximum height in row (so far).
+                let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
+                let itemHeightsInRow = neighbors.map { layoutAttributes[$0].frame.height } + [itemHeight]
+                let maxItemHeightInRow = itemHeightsInRow.reduce(0.0) { (maxValue, nextValue) in
+                    return (nextValue > maxValue) ? nextValue : maxValue
+                }
+                
+                // Update the current UICollectionViewCell frame.
+                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                let frame = CGRect(x: xOffset[columnIdx], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
+                attributes.frame = frame
+                layoutAttributes.append(attributes)
+                
+                // Update frames for other UICollectionViewCells in row.
+                for neighbor in neighbors {
+                    let attributes = layoutAttributes[neighbor]
+                    let frame = attributes.frame
+                    let updatedSize = CGSize(width: frame.width, height: maxItemHeightInRow)
+                    attributes.frame = CGRect(origin: frame.origin, size: updatedSize)
+                    layoutAttributes[neighbor] = attributes
+                }
+                
+                // Update yOffset on last item in row.
+                let isLastColumn = (columnIdx == (numberOfColumns - 1))
+                if isLastColumn {
+                    yOffset += maxItemHeightInRow
+                }
+                let isLastItemInSection = itemIdx == itemsInSection - 1
+                if isLastItemInSection {
+                    let columnNum = itemIdx + 1 // One-based index
+                    if columnNum % numberOfColumns != 0 {
+                        yOffset += frame.height
+                    }
                 }
             }
+            // Layout footers.
+            if let footerHeight = delegate?.collectionView?(collectionView, referenceHeightForFooterInSection: sectionIdx), footerHeight > 0.0 {
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
+                let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: footerHeight)
+                attributes.frame = frame
+                layoutAttributes.append(attributes)
+                yOffset += footerHeight
+            }
         }
+        contentHeight = yOffset
     }
     
     private func xOffsets(columnCount: Int, columnWidth: CGFloat) -> [CGFloat] {
