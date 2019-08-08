@@ -5,6 +5,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
 [![Platform](https://img.shields.io/cocoapods/p/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
+[![Twitter](https://img.shields.io/badge/twitter-@ross_w_butler-blue.svg?style=flat)](https://twitter.com/ross_w_butler)
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 
 FlexibleRowHeightGridLayout is a `UICollectionViewLayout` which lays out self-sizing cells in a grid and is designed to support accessibility, in particular, [Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically). It is designed to automatically re-layout with changes in text size on the device (`UIContentSizeCategory`). Row heights are flexible with this layout i.e. each row may have different height where the height of the row is determined by the tallest cell in the row so that the row height will always fit the content within the row.
