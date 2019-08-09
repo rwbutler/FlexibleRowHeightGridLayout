@@ -39,7 +39,7 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     private var previousOrientation: UIDeviceOrientation?
     
     /// MARK: - Lifecycle
-    override init() {
+    public override init() {
         super.init()
         addObservers()
     }
@@ -80,6 +80,39 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     override public func prepare() {
         guard let collectionView = collectionView, layoutAttributes.isEmpty else { return }
         updateLayoutAttributes(for: collectionView)
+    }
+    
+}
+
+public extension FlexibleRowHeightGridLayout {
+    
+    func columnWidth() -> CGFloat {
+        guard let collectionView = collectionView else {
+            return 0
+        }
+        let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
+        return contentWidth / CGFloat(numberOfColumns)
+    }
+    
+    func labelHeight(_ label: UILabel, width: CGFloat? = nil) -> CGFloat {
+        let font = label.font ?? UIFont.preferredFont(forTextStyle: .body)
+        let text = label.text ?? ""
+        let width = width ?? columnWidth()
+        let size = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let options: NSStringDrawingOptions = label.numberOfLines == 1
+            ? [.usesFontLeading]
+            : [.usesLineFragmentOrigin, .usesFontLeading]
+        let height = text.boundingRect(with: size, options: options,
+                                       attributes: [.font: font], context: nil).height
+        return ceil(height)
+    }
+    
+    func textHeight(_ text: String, font: UIFont, width: CGFloat? = nil) -> CGFloat {
+        let width = width ?? columnWidth()
+        let size = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let height = text.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                       attributes: [.font: font], context: nil).height
+        return ceil(height)
     }
     
 }
@@ -164,7 +197,7 @@ private extension FlexibleRowHeightGridLayout {
         
         // Compute properties needed to determine layout attributes.
         let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
-        let columnWidth = contentWidth / CGFloat(numberOfColumns)
+        let columnWidth = self.columnWidth()
         var xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth)
         var yOffset: CGFloat = 0
         
@@ -172,7 +205,7 @@ private extension FlexibleRowHeightGridLayout {
         for sectionIdx in 0..<sectionsCount {
             // Layout headers.
             let sectionIndexPath = IndexPath(item: 0, section: sectionIdx)
-            if let headerHeight = delegate?.collectionView?(collectionView, referenceHeightForHeaderInSection: sectionIdx), headerHeight > 0.0 {
+            if let headerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForHeaderInSection: sectionIdx), headerHeight > 0.0 {
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
                 let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: headerHeight)
                 attributes.frame = frame
@@ -184,7 +217,7 @@ private extension FlexibleRowHeightGridLayout {
             for itemIdx in 0..<itemsInSection {
                 let columnIdx = itemIdx % numberOfColumns
                 let indexPath = IndexPath(item: itemIdx, section: sectionIdx)
-                let itemHeight = delegate?.collectionView(collectionView, heightForItemAt: indexPath) ?? 0
+                let itemHeight = delegate?.collectionView(collectionView, layout: self, heightForItemAt: indexPath) ?? 0
                 
                 // Calculate maximum height in row (so far).
                 let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
@@ -222,7 +255,7 @@ private extension FlexibleRowHeightGridLayout {
                 }
             }
             // Layout footers.
-            if let footerHeight = delegate?.collectionView?(collectionView, referenceHeightForFooterInSection: sectionIdx), footerHeight > 0.0 {
+            if let footerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForFooterInSection: sectionIdx), footerHeight > 0.0 {
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
                 let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: footerHeight)
                 attributes.frame = frame

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133A835D22FDC9FB00A10591 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A835C22FDC9FB00A10591 /* MenuViewController.swift */; };
+		138018F622FD9004008FC6D4 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018F522FD9004008FC6D4 /* Cell.swift */; };
+		138018F922FD90CE008FC6D4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018F822FD90CE008FC6D4 /* DataSource.swift */; };
+		138018FE22FD9687008FC6D4 /* FlexibleHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018FD22FD9687008FC6D4 /* FlexibleHeightViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* FlowLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* FlowLayoutViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -29,11 +33,15 @@
 
 /* Begin PBXFileReference section */
 		127C63E13AFF6A8CDF7FD6B2 /* Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FlexibleRowHeightGridLayout_Tests/Pods-FlexibleRowHeightGridLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		133A835C22FDC9FB00A10591 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		138018F522FD9004008FC6D4 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		138018F822FD90CE008FC6D4 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		138018FD22FD9687008FC6D4 /* FlexibleHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeightViewController.swift; sourceTree = "<group>"; };
 		3A0058365DE2F3AE9B9E3511 /* Pods_FlexibleRowHeightGridLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexibleRowHeightGridLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* FlexibleRowHeightGridLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexibleRowHeightGridLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* FlowLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -69,6 +77,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		133A835E22FDCBAC00A10591 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				133A835C22FDC9FB00A10591 /* MenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		133A835F22FDCBD100A10591 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		138018F722FD90C4008FC6D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				138018F822FD90CE008FC6D4 /* DataSource.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		138018FA22FD964D008FC6D4 /* UICollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* FlowLayoutViewController.swift */,
+			);
+			name = UICollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		138018FB22FD965A008FC6D4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				138018F522FD9004008FC6D4 /* Cell.swift */,
+				133A835E22FDCBAC00A10591 /* Menu */,
+				138018FC22FD9661008FC6D4 /* FlexibleRowHeightGridLayout */,
+				138018FA22FD964D008FC6D4 /* UICollectionViewFlowLayout */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		138018FC22FD9661008FC6D4 /* FlexibleRowHeightGridLayout */ = {
+			isa = PBXGroup;
+			children = (
+				138018FD22FD9687008FC6D4 /* FlexibleHeightViewController.swift */,
+			);
+			name = FlexibleRowHeightGridLayout;
+			sourceTree = "<group>";
+		};
 		410E38E4F0CB34513CDF9F73 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +163,9 @@
 		607FACD21AFB9204008FA782 /* Example for FlexibleRowHeightGridLayout */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				133A835F22FDCBD100A10591 /* Shared */,
+				138018FB22FD965A008FC6D4 /* UI */,
+				138018F722FD90C4008FC6D4 /* Model */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for FlexibleRowHeightGridLayout";
@@ -118,6 +175,9 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -330,8 +390,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* FlowLayoutViewController.swift in Sources */,
+				133A835D22FDC9FB00A10591 /* MenuViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				138018F922FD90CE008FC6D4 /* DataSource.swift in Sources */,
+				138018F622FD9004008FC6D4 /* Cell.swift in Sources */,
+				138018FE22FD9687008FC6D4 /* FlexibleHeightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlexibleRowHeightGridLayout/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -496,6 +561,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlexibleRowHeightGridLayout/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

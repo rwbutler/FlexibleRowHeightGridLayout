@@ -125,7 +125,7 @@ Notice that in both cases you are required to provide an implementation of the l
 
 The delegate defines two methods which must be implemented in order to allow `FlexibleRowHeightGridLayout` to layout items correctly. These are:
 
-* `func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath) -> CGFloat`
+* `func collectionView(_ collectionView: UICollectionView,  layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat`
 
 Should return the height of the item for the given `IndexPath`. Using this information the layout is able to calculate the correct height for the row. When calculating the height of text, you find it useful to make use of `NSString`'s [func boundingRect(with size: options: attributes: context:) -> CGRect](https://developer.apple.com/documentation/foundation/nsstring/1524729-boundingrect) function as follows:
 
@@ -140,11 +140,11 @@ Should return the number of columns in the `UICollectionView`'s grid when the `U
 
 There are another two delegate methods which may optionally be implemented should you wish to include a header and / or footer as part of your UICollectionView:
 
-* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForHeaderInSection section: Int) -> CGFloat`
+* `@objc optional func collectionView(_ collectionView: UICollectionView,  layout: FlexibleRowHeightGridLayout, referenceHeightForHeaderInSection section: Int) -> CGFloat`
 
 Should return the height of the header in your UICollectionView. If the value returned from this function is zero than no header will be added.
 
-* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForFooterInSection section: Int) -> CGFloat`
+* `@objc optional func collectionView(_ collectionView: UICollectionView,  layout: FlexibleRowHeightGridLayout, referenceHeightForFooterInSection section: Int) -> CGFloat`
 
 Should return the height of the footer in your UICollectionView. If the value returned from this function is zero than no footer will be added.
 
@@ -154,9 +154,9 @@ Should return the height of the footer in your UICollectionView. If the value re
 
 Yes, in order to add a section header and / or footer to your UICollectionView ensure that you provide an implementation for the two optional delegate methods in `FlexibleRowHeightGridLayoutDelegate`:
 
- * `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForHeaderInSection section: Int) -> CGFloat`
+ * `@objc optional func collectionView(_ collectionView: UICollectionView,  layout: FlexibleRowHeightGridLayout, referenceHeightForHeaderInSection section: Int) -> CGFloat`
 
-* `@objc optional func collectionView(_ collectionView: UICollectionView, referenceHeightForFooterInSection section: Int) -> CGFloat`
+* `@objc optional func collectionView(_ collectionView: UICollectionView,  layout: FlexibleRowHeightGridLayout, referenceHeightForFooterInSection section: Int) -> CGFloat`
 
 ## Author
 
