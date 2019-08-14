@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1304BE9E22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */; };
-		136F2EE622F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */; };
+		13457BBD22FE155E00A36E48 /* FlexibleRowHeightGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13457BBB22FE155E00A36E48 /* FlexibleRowHeightGridLayout.swift */; };
+		13457BBE22FE155E00A36E48 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13457BBC22FE155E00A36E48 /* FlexibleRowHeightGridLayoutDelegate.swift */; };
 		2AA233631C77D733E7C44633ECAD2F45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		498768F77D51D9C066A853A680AC6E39 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C6F15B758404603BF8ADD887BB6957 /* Pods-FlexibleRowHeightGridLayout_Example-dummy.m */; };
 		4A136FCD788053DEA2B967E448A7498A /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2227709E192D3F19952FECA813C44EDE /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,8 +40,8 @@
 /* Begin PBXFileReference section */
 		0C1A66A5DDEE32E73FA159A7AA12B8F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0E5A918C4C04FCCA7E99DE8CE3876443 /* Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlexibleRowHeightGridLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleRowHeightGridLayout.swift; sourceTree = "<group>"; };
-		136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleRowHeightGridLayoutDelegate.swift; sourceTree = "<group>"; };
+		13457BBB22FE155E00A36E48 /* FlexibleRowHeightGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlexibleRowHeightGridLayout.swift; path = FlexibleRowHeightGridLayout/Classes/FlexibleRowHeightGridLayout.swift; sourceTree = "<group>"; };
+		13457BBC22FE155E00A36E48 /* FlexibleRowHeightGridLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlexibleRowHeightGridLayoutDelegate.swift; path = FlexibleRowHeightGridLayout/Classes/FlexibleRowHeightGridLayoutDelegate.swift; sourceTree = "<group>"; };
 		146642ABC3901C052EDDC5CB886EE8A7 /* Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlexibleRowHeightGridLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		166DA97AA8D4E7E5C6450912C417A913 /* FlexibleRowHeightGridLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlexibleRowHeightGridLayout-umbrella.h"; sourceTree = "<group>"; };
 		2227709E192D3F19952FECA813C44EDE /* Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlexibleRowHeightGridLayout_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 		17F17DE22AA1C28295639DD31B691B2F /* FlexibleRowHeightGridLayout */ = {
 			isa = PBXGroup;
 			children = (
-				1304BE9D22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift */,
-				136F2EE522F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift */,
+				13457BBB22FE155E00A36E48 /* FlexibleRowHeightGridLayout.swift */,
+				13457BBC22FE155E00A36E48 /* FlexibleRowHeightGridLayoutDelegate.swift */,
 				7D5928AD78D6F94E2FA57E6F1D21A0FD /* Pod */,
 				5885C618DA2F84B17169CD29AB9681D1 /* Support Files */,
 			);
@@ -320,7 +320,7 @@
 				LastUpgradeCheck = 1030;
 				TargetAttributes = {
 					C13372BE1D44015DD4833AD6D06DA678 = {
-						LastSwiftMigration = 1030;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -389,9 +389,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1304BE9E22F983AF00755A07 /* FlexibleRowHeightGridLayout.swift in Sources */,
+				13457BBD22FE155E00A36E48 /* FlexibleRowHeightGridLayout.swift in Sources */,
 				E4E13D14C56E986F7D5182E5BDA2E818 /* FlexibleRowHeightGridLayout-dummy.m in Sources */,
-				136F2EE622F994AB007ADF34 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */,
+				13457BBE22FE155E00A36E48 /* FlexibleRowHeightGridLayoutDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
