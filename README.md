@@ -103,7 +103,7 @@ Proceed to the next step by where you will be asked to select the package produc
 
 In order to have your `UICollectionView` make use of `FlexibleRowHeightGridLayout` to layout content you may either instantiate a new instance and assign it to the collection view's `collectionViewLayout` property if your collection view is defined in Interface Builder as follows:
 
-```
+```swift
 let layout = FlexibleRowHeightGridLayout()
 layout.delegate = self
 collectionView.collectionViewLayout = layout
@@ -113,7 +113,7 @@ collectionView.reloadData()
 
 Or, if your `UICollectionView` is instantiated programmatically then you may pass the layout to the `UICollectionView`'s initializer:
 
-```
+```swift
 let layout = FlexibleRowHeightGridLayout()
 layout.delegate = self
 let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -129,14 +129,14 @@ The delegate defines two methods which must be implemented in order to allow `Fl
 
 Should return the height of the item for the given `IndexPath`. Using this information the layout is able to calculate the correct height for the row. When calculating the height of text, you find it useful to make use of `NSString`'s [func boundingRect(with size: options: attributes: context:) -> CGRect](https://developer.apple.com/documentation/foundation/nsstring/1524729-boundingrect) function as follows:
 
-```
+```swift
 let constraintRect = CGSize(width: columnWidth, height: .greatestFiniteMagnitude)
 let textHeight = "Some text".boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil).height
 ```
     
 In order to help you determine the height of your content, FlexibleRowHeightGridLayout provides a couple of useful methods such as `textHeight(_ text: String, font: UIFont)` to help you calculate the height required to display a String rendered using the specified font. If your cell were to contain a label pinned to each of the edges of the cell’s content view then the height of the cell’s content could easily be calculated as follows:
 
-```
+```swift
 func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat {
     let text = dataSource.item(at: indexPath.item)
     let font = UIFont.preferredFont(forTextStyle: .body)
@@ -144,9 +144,9 @@ func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeigh
 }
 ```
 
-These helper methods are particular useful for developers who are already using TypographyKit (a framework which also supports Dynamic Type by automatically updating the text size on UIKit elements when the users changes the text size preference on their device). Calculating the height of a cell containing a single label can be achieved as follows:
+These helper methods are particular useful for developers who are already using [TypographyKit](https://github.com/rwbutler/typographykit) (a framework which also supports Dynamic Type by automatically updating the text size on UIKit elements when the users changes the text size preference on their device). Calculating the height of a cell containing a single label can be achieved as follows:
 
-```
+```swift
 func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat {
     let text = dataSource.item(at: indexPath.item)
     let font = Typography(for: .cellText).font()
@@ -156,13 +156,15 @@ func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeigh
 
 Or if your cell is defined in a nib, then it is possible to inflate a cell in order to calculate the cell height as follows:
 
-```
+```swift
 let text = dataSource.item(at: indexPath.item)
 guard let nib = Bundle.main.loadNibNamed("CustomCell", owner: CustomCell.self, options: nil), let cell = nib?[0] as? CustomCell else {
     return
 }
+
 // Ensure that your content has been set
 cell.label.text = text
+
 // Assuming your custom cell has a content view
 cell.contentView.setNeedsLayout()
 cell.contentView.layoutIfNeeded()
