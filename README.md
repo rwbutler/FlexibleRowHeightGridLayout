@@ -134,6 +134,42 @@ let constraintRect = CGSize(width: columnWidth, height: .greatestFiniteMagnitude
 let textHeight = "Some text".boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil).height
 ```
     
+In order to help you determine the height of your content, FlexibleRowHeightGridLayout provides a couple of useful methods such as `textHeight(_ text: String, font: UIFont)` to help you calculate the height required to display a String rendered using the specified font. If your cell were to contain a label pinned to each of the edges of the cell’s content view then the height of the cell’s content could easily be calculated as follows:
+
+```
+func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat {
+    let text = dataSource.item(at: indexPath.item)
+    let font = UIFont.preferredFont(forTextStyle: .body)
+    return layout.textHeight(text, font: font)
+}
+```
+
+These helper methods are particular useful for developers who are already using TypographyKit (a framework which also supports Dynamic Type by automatically updating the text size on UIKit elements when the users changes the text size preference on their device). Calculating the height of a cell containing a single label can be achieved as follows:
+
+```
+func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat {
+    let text = dataSource.item(at: indexPath.item)
+    let font = Typography(for: .cellText).font()
+    return layout.textHeight(text, font: font)
+}
+```
+
+Or if your cell is defined in a nib, then it is possible to inflate a cell in order to calculate the cell height as follows:
+
+```
+let text = dataSource.item(at: indexPath.item)
+guard let nib = Bundle.main.loadNibNamed("CustomCell", owner: CustomCell.self, options: nil), let cell = nib?[0] as? CustomCell else {
+    return
+}
+// Ensure that your content has been set
+cell.label.text = text
+// Assuming your custom cell has a content view
+cell.contentView.setNeedsLayout()
+cell.contentView.layoutIfNeeded()
+let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+return size.height
+```
+    
 * `func numberOfColumns(for size: CGSize) -> Int`
 
 Should return the number of columns in the `UICollectionView`'s grid when the `UICollectionView` is of the specified size. For example, the `UICollectionView` may have larger bounds when the device is in landscape and therefore you may want your `UICollectionView` to have 4 columns when the device is in landscape orientation and only 3 when in portrait.
