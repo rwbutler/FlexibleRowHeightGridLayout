@@ -26,7 +26,9 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
             return 0
         }
         let insets = collectionView.contentInset
-        return collectionView.bounds.width - (insets.left + insets.right)
+        let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
+        let spacing = (numberOfColumns - 1) * minimumInteritemSpacing
+        return collectionView.bounds.width - (insets.left + insets.right + spacing)
     }
     
     /// Layout delegate required to determine heights of individual UICollectionViewCells.
@@ -35,6 +37,12 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     /// Layout attributes for positioning UICollectionViewCells.
     private var layoutAttributes = [UICollectionViewLayoutAttributes]()
     
+    /// The minimum spacing to use between lines of items in the grid.
+    public var minimumLineSpacing: CGFloat = 0
+    
+    // The minimum spacing to use between items in the same row.
+    public var minimumInteritemSpacing: CGFloat = 0
+
     /// Previous device orientation.
     private var previousOrientation: UIDeviceOrientation?
     
@@ -90,8 +98,8 @@ public extension FlexibleRowHeightGridLayout {
         guard let collectionView = collectionView else {
             return 0
         }
-        let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
-        return contentWidth / CGFloat(numberOfColumns)
+        let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
+        return floor(contentWidth / numberOfColumns)
     }
     
     func labelHeight(_ label: UILabel, width: CGFloat? = nil) -> CGFloat {
@@ -198,8 +206,9 @@ private extension FlexibleRowHeightGridLayout {
         // Compute properties needed to determine layout attributes.
         let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
         let columnWidth = self.columnWidth()
-        var xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth)
-        var yOffset: CGFloat = 0
+        var xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth,
+                                          spacing: minimumInteritemSpacing)
+        var yOffset: CGFloat = 0.0
         
         let sectionsCount = collectionView.numberOfSections
         for sectionIdx in 0..<sectionsCount {
@@ -212,6 +221,7 @@ private extension FlexibleRowHeightGridLayout {
                 layoutAttributes.append(attributes)
                 yOffset += headerHeight
             }
+            yOffset += minimumLineSpacing
             // Layout items in section.
             let itemsInSection = collectionView.numberOfItems(inSection: sectionIdx)
             for itemIdx in 0..<itemsInSection {
@@ -244,7 +254,7 @@ private extension FlexibleRowHeightGridLayout {
                 // Update yOffset on last item in row.
                 let isLastColumn = (columnIdx == (numberOfColumns - 1))
                 if isLastColumn {
-                    yOffset += maxItemHeightInRow
+                    yOffset += maxItemHeightInRow + minimumLineSpacing
                 }
                 let isLastItemInSection = itemIdx == itemsInSection - 1
                 if isLastItemInSection {
@@ -266,10 +276,11 @@ private extension FlexibleRowHeightGridLayout {
         contentHeight = yOffset
     }
     
-    private func xOffsets(columnCount: Int, columnWidth: CGFloat) -> [CGFloat] {
+    private func xOffsets(columnCount: Int, columnWidth: CGFloat, spacing: CGFloat) -> [CGFloat] {
         var xOffset = [CGFloat]()
         for column in 0 ..< columnCount {
-            xOffset.append(CGFloat(column) * columnWidth)
+            let columnIdx = CGFloat(column)
+            xOffset.append((columnIdx * columnWidth) + (columnIdx * spacing))
         }
         return xOffset
     }

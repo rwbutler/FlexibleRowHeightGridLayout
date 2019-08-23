@@ -19,6 +19,8 @@ class FlexibleHeightViewController: UIViewController {
         collectionView.dataSource = dataSource
         let layout = FlexibleRowHeightGridLayout()
         layout.delegate = self
+        layout.minimumInteritemSpacing = 10.0
+        layout.minimumLineSpacing = 10.0
         collectionView.collectionViewLayout = layout
     }
     
