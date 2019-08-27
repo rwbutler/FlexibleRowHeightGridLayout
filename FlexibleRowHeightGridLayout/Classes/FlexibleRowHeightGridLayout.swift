@@ -38,10 +38,10 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     private var layoutAttributes = [UICollectionViewLayoutAttributes]()
     
     /// The minimum spacing to use between lines of items in the grid.
-    public var minimumLineSpacing: CGFloat = 0
+    @objc public var minimumLineSpacing: CGFloat = 0
     
     // The minimum spacing to use between items in the same row.
-    public var minimumInteritemSpacing: CGFloat = 0
+    @objc public var minimumInteritemSpacing: CGFloat = 0
 
     /// Previous device orientation.
     private var previousOrientation: UIDeviceOrientation?
