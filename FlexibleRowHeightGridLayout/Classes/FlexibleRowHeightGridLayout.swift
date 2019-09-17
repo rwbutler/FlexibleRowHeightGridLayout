@@ -42,9 +42,6 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     
     // The minimum spacing to use between items in the same row.
     @objc public var minimumInteritemSpacing: CGFloat = 0
-
-    /// Previous device orientation.
-    private var previousOrientation: UIDeviceOrientation?
     
     /// MARK: - Lifecycle
     public override init() {
@@ -65,8 +62,13 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
         NotificationCenter.default.removeObserver(self, name: sizeCategoryChangedNotification, object: nil)
     }
     
+    public override func invalidateLayout() {
+        super.invalidateLayout()
+        layoutAttributes = []
+    }
+    
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        if let collectionView = self.collectionView {
+        if let collectionView = self.collectionView, layoutAttributes.isEmpty {
             updateLayoutAttributes(for: collectionView)
         }
         var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
@@ -88,6 +90,13 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     override public func prepare() {
         guard let collectionView = collectionView, layoutAttributes.isEmpty else { return }
         updateLayoutAttributes(for: collectionView)
+    }
+    
+    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        guard let oldBounds = collectionView?.bounds else {
+            return false
+        }
+        return newBounds.width != oldBounds.width
     }
     
 }
@@ -129,10 +138,7 @@ private extension FlexibleRowHeightGridLayout {
     
     private func addObservers() {
         let notificationCenter = NotificationCenter.default
-        let orientationChangedNotification = UIDevice.orientationDidChangeNotification
         let sizeCategoryChangedNotification = UIContentSizeCategory.didChangeNotification
-        notificationCenter.addObserver(self, selector: #selector(orientationDidChange(_:)),
-                                       name: orientationChangedNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(contentSizeDidChange(_:)),
                                        name: sizeCategoryChangedNotification, object: nil)
     }
@@ -179,21 +185,6 @@ private extension FlexibleRowHeightGridLayout {
         return indicesLessThanCurrent
     }
     
-    @objc func orientationDidChange(_ notification: Notification) {
-        let supportedOrientations: [UIDeviceOrientation] = [.landscapeLeft, .landscapeRight, .portrait, .portraitUpsideDown]
-        guard let orientation = (notification.object as? UIDevice)?.orientation,
-            supportedOrientations.contains(orientation) else {
-                return
-        }
-        if let previous = previousOrientation {
-            guard previous != orientation else { return }
-            updateLayoutAttributes()
-        } else {
-            updateLayoutAttributes()
-        }
-        previousOrientation = orientation
-    }
-    
     private func updateLayoutAttributes() {
         guard let collectionView = collectionView else { return }
         updateLayoutAttributes(for: collectionView)
@@ -206,7 +197,7 @@ private extension FlexibleRowHeightGridLayout {
         // Compute properties needed to determine layout attributes.
         let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
         let columnWidth = self.columnWidth()
-        var xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth,
+        let xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth,
                                           spacing: minimumInteritemSpacing)
         var yOffset: CGFloat = 0.0
         
