@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2018-09-30
+### Added
+- Support for multiple sections.
+### Changed
+- Fixed calculation of layout attributes for headers and footers.
+
 ## [1.2.2] - 2018-09-04
 ### Changed
 - Performance improvements to ensure that delegate methods are only invoked when the layout is invalidated.

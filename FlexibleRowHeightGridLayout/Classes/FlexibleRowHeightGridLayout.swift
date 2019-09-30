@@ -25,17 +25,27 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
         guard let collectionView = collectionView else {
             return 0
         }
-        let insets = collectionView.contentInset
         let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
         let spacing = (numberOfColumns - 1) * minimumInteritemSpacing
-        return collectionView.bounds.width - (insets.left + insets.right + spacing)
+        return headerWidth - spacing
+    }
+    
+    /// Width of the UICollectionView header
+    private var headerWidth: CGFloat {
+        guard let collectionView = collectionView else {
+            return 0
+        }
+        let insets = collectionView.contentInset
+        return collectionView.bounds.width - (insets.left + insets.right)
     }
     
     /// Layout delegate required to determine heights of individual UICollectionViewCells.
     @objc public weak var delegate: Delegate?
     
     /// Layout attributes for positioning UICollectionViewCells.
-    private var layoutAttributes = [UICollectionViewLayoutAttributes]()
+    private var headerLayoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
+    private var layoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
+    private var footerLayoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
     
     /// The minimum spacing to use between lines of items in the grid.
     @objc public var minimumLineSpacing: CGFloat = 0
@@ -64,7 +74,23 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     
     public override func invalidateLayout() {
         super.invalidateLayout()
-        layoutAttributes = []
+        resetLayoutAttributes()
+    }
+    
+    public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        if elementKind == UICollectionView.elementKindSectionHeader {
+            if let collectionView = self.collectionView, headerLayoutAttributes[indexPath] != nil {
+                updateLayoutAttributes(for: collectionView)
+            }
+            return headerLayoutAttributes[indexPath]
+        }
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            if let collectionView = self.collectionView, footerLayoutAttributes[indexPath] != nil {
+                updateLayoutAttributes(for: collectionView)
+            }
+            return footerLayoutAttributes[indexPath]
+        }
+        return nil
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -72,7 +98,17 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
             updateLayoutAttributes(for: collectionView)
         }
         var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in layoutAttributes {
+        for attributes in headerLayoutAttributes.values {
+            if attributes.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attributes)
+            }
+        }
+        for attributes in layoutAttributes.values {
+            if attributes.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attributes)
+            }
+        }
+        for attributes in footerLayoutAttributes.values {
             if attributes.frame.intersects(rect) {
                 visibleLayoutAttributes.append(attributes)
             }
@@ -84,7 +120,7 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
         if indexPath.item >= layoutAttributes.count, let collectionView = self.collectionView {
             updateLayoutAttributes(for: collectionView)
         }
-        return layoutAttributes[indexPath.item]
+        return layoutAttributes[indexPath]
     }
     
     override public func prepare() {
@@ -185,6 +221,13 @@ private extension FlexibleRowHeightGridLayout {
         return indicesLessThanCurrent
     }
     
+    /// Clears previously calculated layout attributes.
+    private func resetLayoutAttributes() {
+        headerLayoutAttributes = [:]
+        layoutAttributes = [:]
+        footerLayoutAttributes = [:]
+    }
+    
     private func updateLayoutAttributes() {
         guard let collectionView = collectionView else { return }
         updateLayoutAttributes(for: collectionView)
@@ -192,7 +235,7 @@ private extension FlexibleRowHeightGridLayout {
     }
     
     private func updateLayoutAttributes(for collectionView: UICollectionView) {
-        layoutAttributes = [] // Empty existing attributes.
+        resetLayoutAttributes()
         
         // Compute properties needed to determine layout attributes.
         let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
@@ -203,16 +246,20 @@ private extension FlexibleRowHeightGridLayout {
         
         let sectionsCount = collectionView.numberOfSections
         for sectionIdx in 0..<sectionsCount {
+            let headerIdxPath = IndexPath(item: 0, section: sectionIdx)
             // Layout headers.
             let sectionIndexPath = IndexPath(item: 0, section: sectionIdx)
             if let headerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForHeaderInSection: sectionIdx), headerHeight > 0.0 {
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
-                let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: headerHeight)
+                let leftInset = collectionView.contentInset.left
+                let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: headerHeight)
                 attributes.frame = frame
-                layoutAttributes.append(attributes)
+                headerLayoutAttributes[headerIdxPath] = attributes
                 yOffset += headerHeight
+                if sectionIdx != 0 {
+                    yOffset += minimumLineSpacing
+                }
             }
-            yOffset += minimumLineSpacing
             // Layout items in section.
             let itemsInSection = collectionView.numberOfItems(inSection: sectionIdx)
             for itemIdx in 0..<itemsInSection {
@@ -222,7 +269,11 @@ private extension FlexibleRowHeightGridLayout {
                 
                 // Calculate maximum height in row (so far).
                 let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
-                let itemHeightsInRow = neighbors.map { layoutAttributes[$0].frame.height } + [itemHeight]
+                let itemHeightsInRow = neighbors.compactMap {
+                    let neighboringIdxPath = IndexPath(item: $0, section: sectionIdx)
+                    let attrs = layoutAttributes[neighboringIdxPath]?.frame.height
+                    return attrs
+                    } + [itemHeight]
                 let maxItemHeightInRow = itemHeightsInRow.reduce(0.0) { (maxValue, nextValue) in
                     return (nextValue > maxValue) ? nextValue : maxValue
                 }
@@ -231,15 +282,17 @@ private extension FlexibleRowHeightGridLayout {
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 let frame = CGRect(x: xOffset[columnIdx], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
                 attributes.frame = frame
-                layoutAttributes.append(attributes)
+                layoutAttributes[indexPath] = attributes
                 
                 // Update frames for other UICollectionViewCells in row.
                 for neighbor in neighbors {
-                    let attributes = layoutAttributes[neighbor]
-                    let frame = attributes.frame
-                    let updatedSize = CGSize(width: frame.width, height: maxItemHeightInRow)
-                    attributes.frame = CGRect(origin: frame.origin, size: updatedSize)
-                    layoutAttributes[neighbor] = attributes
+                    let neighboringIdxPath = IndexPath(item: neighbor, section: sectionIdx)
+                    if let attributes = layoutAttributes[neighboringIdxPath] {
+                        let frame = attributes.frame
+                        let updatedSize = CGSize(width: frame.width, height: maxItemHeightInRow)
+                        attributes.frame = CGRect(origin: frame.origin, size: updatedSize)
+                        layoutAttributes[neighboringIdxPath] = attributes
+                    }
                 }
                 
                 // Update yOffset on last item in row.
@@ -251,17 +304,21 @@ private extension FlexibleRowHeightGridLayout {
                 if isLastItemInSection {
                     let columnNum = itemIdx + 1 // One-based index
                     if columnNum % numberOfColumns != 0 {
-                        yOffset += frame.height
+                        yOffset += (frame.height + minimumLineSpacing)
                     }
                 }
             }
             // Layout footers.
             if let footerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForFooterInSection: sectionIdx), footerHeight > 0.0 {
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
-                let frame = CGRect(x: 0.0, y: yOffset, width: contentWidth, height: footerHeight)
+                let leftInset = collectionView.contentInset.left
+                let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: footerHeight)
                 attributes.frame = frame
-                layoutAttributes.append(attributes)
+                footerLayoutAttributes[headerIdxPath] = attributes
                 yOffset += footerHeight
+                if sectionIdx != (sectionsCount - 1) {
+                    yOffset += minimumLineSpacing
+                }
             }
         }
         contentHeight = yOffset
@@ -277,4 +334,3 @@ private extension FlexibleRowHeightGridLayout {
     }
     
 }
-
