@@ -28,7 +28,8 @@ class FlexibleHeightViewController: UIViewController {
 
 extension FlexibleHeightViewController: FlexibleRowHeightGridLayoutDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout, heightForItemAt indexPath: IndexPath) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
+                        heightForItemAt indexPath: IndexPath) -> CGFloat {
         let text = dataSource.item(at: indexPath.item)
         let font = UIFont.preferredFont(forTextStyle: .body)
         return layout.textHeight(text, font: font)

@@ -77,7 +77,8 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
         resetLayoutAttributes()
     }
     
-    public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath)
+        -> UICollectionViewLayoutAttributes? {
         if elementKind == UICollectionView.elementKindSectionHeader {
             if let collectionView = self.collectionView, headerLayoutAttributes[indexPath] != nil {
                 updateLayoutAttributes(for: collectionView)
@@ -214,7 +215,8 @@ private extension FlexibleRowHeightGridLayout {
         return indices.filter { $0 < index }
     }
     
-    /// Indices of cells whose heights should be compared against that of the current cell to determine the height of the new cell.
+    /// Indices of cells whose heights should be compared against that of the current cell to determine the height of
+    /// the new cell.
     private func neighboringIndicesLessThan(index: Int, itemsPerRow: Int) -> [Int] {
         let sameRowIndices = indicesInSameRow(as: index, itemsPerRow: itemsPerRow)
         let indicesLessThanCurrent = indicesLessThan(index: index, in: sameRowIndices)
@@ -249,8 +251,12 @@ private extension FlexibleRowHeightGridLayout {
             let headerIdxPath = IndexPath(item: 0, section: sectionIdx)
             // Layout headers.
             let sectionIndexPath = IndexPath(item: 0, section: sectionIdx)
-            if let headerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForHeaderInSection: sectionIdx), headerHeight > 0.0 {
-                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
+            let headerHeight = delegate?.collectionView?(collectionView, layout: self,
+                                                         referenceHeightForHeaderInSection: sectionIdx)
+            if let headerHeight = headerHeight, headerHeight > 0.0 {
+                let kind = UICollectionView.elementKindSectionHeader
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind,
+                                                                  with: sectionIndexPath)
                 let leftInset = collectionView.contentInset.left
                 let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: headerHeight)
                 attributes.frame = frame
@@ -309,8 +315,11 @@ private extension FlexibleRowHeightGridLayout {
                 }
             }
             // Layout footers.
-            if let footerHeight = delegate?.collectionView?(collectionView, layout: self, referenceHeightForFooterInSection: sectionIdx), footerHeight > 0.0 {
-                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
+            let footerHeight = delegate?.collectionView?(collectionView, layout: self,
+                                                         referenceHeightForFooterInSection: sectionIdx)
+            if let footerHeight = footerHeight, footerHeight > 0.0 {
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind:
+                    UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
                 let leftInset = collectionView.contentInset.left
                 let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: footerHeight)
                 attributes.frame = frame

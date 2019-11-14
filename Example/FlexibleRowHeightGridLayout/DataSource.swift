@@ -13,7 +13,8 @@ class DataSource: NSObject {
     
     private let strings = [
         "Short text", "Short text", "Short text", "Some longer text which needs more room", "Short text", "Short text",
-        "Short text", "This is a sentence which requires more space and therefore the height of the cell will be taller.",
+        "Short text",
+        "This is a sentence which requires more space and therefore the height of the cell will be taller.",
         "Short text", "Short text", "Short text", "Short text", "Short text", "Short text", "Short text", "Short text",
         "Short text", "Short text", "Some longer text which needs more room.", "Short text", "Short text", "Short text"
     ]
@@ -30,7 +31,8 @@ class DataSource: NSObject {
 
 extension DataSource: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         let dequeuedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         guard let cell = dequeuedCell as? Cell else { return dequeuedCell }
         let text = item(at: indexPath.item)
