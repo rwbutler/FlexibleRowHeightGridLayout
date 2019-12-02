@@ -5,6 +5,9 @@
 //  Created by Ross Butler on 8/6/19.
 //
 
+import Foundation
+import UIKit
+
 public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     
     // MARK: Type Definitions
