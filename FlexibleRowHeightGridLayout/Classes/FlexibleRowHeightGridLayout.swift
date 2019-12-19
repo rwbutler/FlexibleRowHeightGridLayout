@@ -56,7 +56,7 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     // The minimum spacing to use between items in the same row.
     @objc public var minimumInteritemSpacing: CGFloat = 0
     
-    /// MARK: - Lifecycle
+    // MARK: - Lifecycle
     public override init() {
         super.init()
         addObservers()
