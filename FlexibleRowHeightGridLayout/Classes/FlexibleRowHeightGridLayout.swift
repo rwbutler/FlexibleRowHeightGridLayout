@@ -28,18 +28,8 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
         guard let collectionView = collectionView else {
             return 0
         }
-        let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
-        let spacing = (numberOfColumns - 1) * minimumInteritemSpacing
-        return headerWidth - spacing
-    }
-    
-    /// Width of the UICollectionView header
-    private var headerWidth: CGFloat {
-        guard let collectionView = collectionView else {
-            return 0
-        }
-        let insets = collectionView.contentInset
-        return collectionView.bounds.width - (insets.left + insets.right)
+        let contentInset = collectionView.contentInset
+        return collectionView.bounds.size.width - (contentInset.left + contentInset.right)
     }
     
     /// Layout delegate required to determine heights of individual UICollectionViewCells.
@@ -55,6 +45,9 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     
     // The minimum spacing to use between items in the same row.
     @objc public var minimumInteritemSpacing: CGFloat = 0
+    
+    // The margin for items within a section.
+    @objc public var sectionInset: UIEdgeInsets = UIEdgeInsets.zero
     
     // MARK: - Lifecycle
     public override init() {
@@ -77,24 +70,24 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
     
     public override func invalidateLayout() {
         super.invalidateLayout()
-        resetLayoutAttributes()
+        clearLayoutAttributes()
     }
     
     public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath)
         -> UICollectionViewLayoutAttributes? {
-        if elementKind == UICollectionView.elementKindSectionHeader {
-            if let collectionView = self.collectionView, headerLayoutAttributes[indexPath] != nil {
-                updateLayoutAttributes(for: collectionView)
+            if elementKind == UICollectionView.elementKindSectionHeader {
+                if let collectionView = self.collectionView, headerLayoutAttributes[indexPath] != nil {
+                    updateLayoutAttributes(for: collectionView)
+                }
+                return headerLayoutAttributes[indexPath]
             }
-            return headerLayoutAttributes[indexPath]
-        }
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            if let collectionView = self.collectionView, footerLayoutAttributes[indexPath] != nil {
-                updateLayoutAttributes(for: collectionView)
+            if elementKind == UICollectionView.elementKindSectionFooter {
+                if let collectionView = self.collectionView, footerLayoutAttributes[indexPath] != nil {
+                    updateLayoutAttributes(for: collectionView)
+                }
+                return footerLayoutAttributes[indexPath]
             }
-            return footerLayoutAttributes[indexPath]
-        }
-        return nil
+            return nil
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -143,18 +136,17 @@ public class FlexibleRowHeightGridLayout: UICollectionViewLayout {
 
 public extension FlexibleRowHeightGridLayout {
     
-    func columnWidth() -> CGFloat {
+    func columnWidth(for section: Int) -> CGFloat {
         guard let collectionView = collectionView else {
             return 0
         }
-        let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
-        return floor(contentWidth / numberOfColumns)
+        return columnWidth(for: section, in: collectionView)
     }
     
-    func labelHeight(_ label: UILabel, width: CGFloat? = nil) -> CGFloat {
+    func labelHeight(_ label: UILabel, width: CGFloat? = nil, in section: Int) -> CGFloat {
         let font = label.font ?? UIFont.preferredFont(forTextStyle: .body)
         let text = label.text ?? ""
-        let width = width ?? columnWidth()
+        let width = width ?? columnWidth(for: section)
         let size = CGSize(width: width, height: .greatestFiniteMagnitude)
         let options: NSStringDrawingOptions = label.numberOfLines == 1
             ? [.usesFontLeading]
@@ -164,8 +156,8 @@ public extension FlexibleRowHeightGridLayout {
         return ceil(height)
     }
     
-    func textHeight(_ text: String, font: UIFont, width: CGFloat? = nil) -> CGFloat {
-        let width = width ?? columnWidth()
+    func textHeight(_ text: String, font: UIFont, width: CGFloat? = nil, in section: Int) -> CGFloat {
+        let width = width ?? columnWidth(for: section)
         let size = CGSize(width: width, height: .greatestFiniteMagnitude)
         let height = text.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading],
                                        attributes: [.font: font], context: nil).height
@@ -176,11 +168,21 @@ public extension FlexibleRowHeightGridLayout {
 
 private extension FlexibleRowHeightGridLayout {
     
+    /// Adds the layout as an observer for `UIContentSizeCategory.didChangeNotification`.
     private func addObservers() {
-        let notificationCenter = NotificationCenter.default
-        let sizeCategoryChangedNotification = UIContentSizeCategory.didChangeNotification
-        notificationCenter.addObserver(self, selector: #selector(contentSizeDidChange(_:)),
-                                       name: sizeCategoryChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(contentSizeDidChange(_:)),
+            name: UIContentSizeCategory.didChangeNotification,
+            object: nil
+        )
+    }
+    
+    /// Clears previously calculated layout attributes.
+    private func clearLayoutAttributes() {
+        headerLayoutAttributes = [:]
+        layoutAttributes = [:]
+        footerLayoutAttributes = [:]
     }
     
     /// Retrieves the number of columns in the grid layout.
@@ -193,8 +195,34 @@ private extension FlexibleRowHeightGridLayout {
         return numberOfColumns
     }
     
+    /// Calculates the width of a column within the given section.
+    private func columnWidth(for section: Int, in collectionView: UICollectionView) -> CGFloat {
+        let contentInset = collectionView.contentInset
+        let numberOfColumns = CGFloat(columnCount(contentSize: collectionView.bounds.size))
+        let sectionInset = self.sectionInset(for: section, in: collectionView)
+        let sectionSpacing = minInterItemSpacing(for: section, in: collectionView) * (numberOfColumns - 1)
+        let sectionWidth = collectionView.bounds.width
+            - (sectionInset.left + sectionInset.right + sectionSpacing + contentInset.left + contentInset.right)
+        return sectionWidth / numberOfColumns
+    }
+    
+    /// Calculates the x-coordinates for the given number of columns with the specified width and spacing.
+    private func columnXCoordinates(columnCount: Int, columnWidth: CGFloat, spacing: CGFloat) -> [CGFloat] {
+        var xOffset = [CGFloat]()
+        (0 ..< columnCount).forEach {
+            let columnIndex = CGFloat($0)
+            xOffset.append((columnIndex * columnWidth) + (columnIndex * spacing))
+        }
+        return xOffset
+    }
+    
+    /// Invoked for changes in `UIContentSizeCategory`.
     @objc func contentSizeDidChange(_ notification: Notification) {
-        updateLayoutAttributes()
+        guard let collectionView = collectionView else {
+            return
+        }
+        updateLayoutAttributes(for: collectionView)
+        collectionView.reloadData()
     }
     
     /// Calculates the indices that represent the cells in the same row as the specified index.
@@ -218,6 +246,24 @@ private extension FlexibleRowHeightGridLayout {
         return indices.filter { $0 < index }
     }
     
+    /// Retrieves the minimum spacing between items for the given section.
+    private func minInterItemSpacing(for section: Int, in collectionView: UICollectionView) -> CGFloat {
+        return delegate?.collectionView?(
+            collectionView,
+            layout: self,
+            minimumInteritemSpacingForSectionAt: section
+            ) ?? minimumInteritemSpacing
+    }
+    
+    /// Retrieves the minimum spacing between lines for the given section.
+    private func minLineSpacing(for section: Int, in collectionView: UICollectionView) -> CGFloat {
+        return delegate?.collectionView?(
+            collectionView,
+            layout: self,
+            minimumLineSpacingForSectionAt: section
+            ) ?? minimumLineSpacing
+    }
+    
     /// Indices of cells whose heights should be compared against that of the current cell to determine the height of
     /// the new cell.
     private func neighboringIndicesLessThan(index: Int, itemsPerRow: Int) -> [Int] {
@@ -226,60 +272,71 @@ private extension FlexibleRowHeightGridLayout {
         return indicesLessThanCurrent
     }
     
-    /// Clears previously calculated layout attributes.
-    private func resetLayoutAttributes() {
-        headerLayoutAttributes = [:]
-        layoutAttributes = [:]
-        footerLayoutAttributes = [:]
+    /// Retrieves the `UIEdgeInsets` for the specified section.
+    private func sectionInset(for section: Int, in collectionView: UICollectionView) -> UIEdgeInsets {
+        return delegate?.collectionView?(
+            collectionView,
+            layout: self,
+            insetForSectionAt: section
+            ) ?? self.sectionInset
     }
     
-    private func updateLayoutAttributes() {
-        guard let collectionView = collectionView else { return }
-        updateLayoutAttributes(for: collectionView)
-        collectionView.reloadData()
-    }
-    
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     private func updateLayoutAttributes(for collectionView: UICollectionView) {
-        resetLayoutAttributes()
+        clearLayoutAttributes()
         
         // Compute properties needed to determine layout attributes.
         let numberOfColumns = columnCount(contentSize: collectionView.bounds.size)
-        let columnWidth = self.columnWidth()
-        let xOffset: [CGFloat] = xOffsets(columnCount: numberOfColumns, columnWidth: columnWidth,
-                                          spacing: minimumInteritemSpacing)
         var yOffset: CGFloat = 0.0
         
         let sectionsCount = collectionView.numberOfSections
-        for sectionIdx in 0..<sectionsCount {
-            let headerIdxPath = IndexPath(item: 0, section: sectionIdx)
+        for sectionIndex in 0..<sectionsCount {
+            let sectionInsets = sectionInset(for: sectionIndex, in: collectionView)
+            
+            let minInterItemSpacing = self.minInterItemSpacing(for: sectionIndex, in: collectionView)
+            let minLineSpacing = self.minLineSpacing(for: sectionIndex, in: collectionView)
+            let columnWidth = self.columnWidth(for: sectionIndex, in: collectionView)
+            let xOffset: [CGFloat] = columnXCoordinates(
+                columnCount: numberOfColumns,
+                columnWidth: columnWidth,
+                spacing: minInterItemSpacing
+            )
+            let headerIdxPath = IndexPath(item: 0, section: sectionIndex)
+            
             // Layout headers.
-            let sectionIndexPath = IndexPath(item: 0, section: sectionIdx)
-            let headerHeight = delegate?.collectionView?(collectionView, layout: self,
-                                                         referenceHeightForHeaderInSection: sectionIdx)
-            if let headerHeight = headerHeight, headerHeight > 0.0 {
+            let sectionIndexPath = IndexPath(item: 0, section: sectionIndex)
+            let headerSize = delegate?.collectionView?(
+                collectionView,
+                layout: self,
+                referenceSizeForHeaderInSection: sectionIndex
+            )
+            if let headerSize = headerSize, headerSize.height > 0.0 {
                 let kind = UICollectionView.elementKindSectionHeader
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind,
                                                                   with: sectionIndexPath)
-                let leftInset = collectionView.contentInset.left
-                let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: headerHeight)
+                let frame = CGRect(x: xOffset[0], y: yOffset, width: headerSize.width, height: headerSize.height)
                 attributes.frame = frame
                 headerLayoutAttributes[headerIdxPath] = attributes
-                yOffset += headerHeight
-                if sectionIdx != 0 {
-                    yOffset += minimumLineSpacing
+                yOffset += headerSize.height
+                if sectionIndex != 0 {
+                    yOffset += minLineSpacing
                 }
             }
+            
+            // Account for section inset from header.
+            yOffset += sectionInsets.top
+            
             // Layout items in section.
-            let itemsInSection = collectionView.numberOfItems(inSection: sectionIdx)
+            let itemsInSection = collectionView.numberOfItems(inSection: sectionIndex)
             for itemIdx in 0..<itemsInSection {
                 let columnIdx = itemIdx % numberOfColumns
-                let indexPath = IndexPath(item: itemIdx, section: sectionIdx)
+                let indexPath = IndexPath(item: itemIdx, section: sectionIndex)
                 let itemHeight = delegate?.collectionView(collectionView, layout: self, heightForItemAt: indexPath) ?? 0
                 
                 // Calculate maximum height in row (so far).
                 let neighbors = neighboringIndicesLessThan(index: itemIdx, itemsPerRow: numberOfColumns)
                 let itemHeightsInRow = neighbors.compactMap {
-                    let neighboringIdxPath = IndexPath(item: $0, section: sectionIdx)
+                    let neighboringIdxPath = IndexPath(item: $0, section: sectionIndex)
                     let attrs = layoutAttributes[neighboringIdxPath]?.frame.height
                     return attrs
                     } + [itemHeight]
@@ -289,13 +346,16 @@ private extension FlexibleRowHeightGridLayout {
                 
                 // Update the current UICollectionViewCell frame.
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                let frame = CGRect(x: xOffset[columnIdx], y: yOffset, width: columnWidth, height: maxItemHeightInRow)
+                let leftOffset = xOffset[columnIdx] + sectionInsets.left
+                let topOffset = yOffset
+                
+                let frame = CGRect(x: leftOffset, y: topOffset, width: columnWidth, height: maxItemHeightInRow)
                 attributes.frame = frame
                 layoutAttributes[indexPath] = attributes
                 
                 // Update frames for other UICollectionViewCells in row.
                 for neighbor in neighbors {
-                    let neighboringIdxPath = IndexPath(item: neighbor, section: sectionIdx)
+                    let neighboringIdxPath = IndexPath(item: neighbor, section: sectionIndex)
                     if let attributes = layoutAttributes[neighboringIdxPath] {
                         let frame = attributes.frame
                         let updatedSize = CGSize(width: frame.width, height: maxItemHeightInRow)
@@ -307,42 +367,41 @@ private extension FlexibleRowHeightGridLayout {
                 // Update yOffset on last item in row.
                 let isLastColumn = (columnIdx == (numberOfColumns - 1))
                 if isLastColumn {
-                    yOffset += maxItemHeightInRow + minimumLineSpacing
+                    yOffset += maxItemHeightInRow + minLineSpacing
                 }
                 let isLastItemInSection = itemIdx == itemsInSection - 1
                 if isLastItemInSection {
                     let columnNum = itemIdx + 1 // One-based index
                     if columnNum % numberOfColumns != 0 {
-                        yOffset += (frame.height + minimumLineSpacing)
+                        yOffset += (frame.height + minLineSpacing)
                     }
                 }
             }
+            
             // Layout footers.
-            let footerHeight = delegate?.collectionView?(collectionView, layout: self,
-                                                         referenceHeightForFooterInSection: sectionIdx)
-            if let footerHeight = footerHeight, footerHeight > 0.0 {
+            let footerSize = delegate?.collectionView?(
+                collectionView,
+                layout: self,
+                referenceSizeForFooterInSection: sectionIndex
+            )
+            if let footerSize = footerSize, footerSize.height > 0.0 {
                 let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind:
                     UICollectionView.elementKindSectionFooter, with: sectionIndexPath)
-                let leftInset = collectionView.contentInset.left
-                let frame = CGRect(x: leftInset, y: yOffset, width: headerWidth, height: footerHeight)
+                let frame = CGRect(
+                    x: xOffset[0],
+                    y: yOffset + sectionInsets.top + sectionInsets.bottom,
+                    width: footerSize.width,
+                    height: footerSize.height
+                )
                 attributes.frame = frame
                 footerLayoutAttributes[headerIdxPath] = attributes
-                yOffset += footerHeight
-                if sectionIdx != (sectionsCount - 1) {
-                    yOffset += minimumLineSpacing
+                yOffset += footerSize.height
+                if sectionIndex != (sectionsCount - 1) {
+                    yOffset += minLineSpacing
                 }
             }
         }
         contentHeight = yOffset
-    }
-    
-    private func xOffsets(columnCount: Int, columnWidth: CGFloat, spacing: CGFloat) -> [CGFloat] {
-        var xOffset = [CGFloat]()
-        for column in 0 ..< columnCount {
-            let columnIdx = CGFloat(column)
-            xOffset.append((columnIdx * columnWidth) + (columnIdx * spacing))
-        }
-        return xOffset
     }
     
 }

@@ -11,6 +11,9 @@
 		138018F622FD9004008FC6D4 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018F522FD9004008FC6D4 /* Cell.swift */; };
 		138018F922FD90CE008FC6D4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018F822FD90CE008FC6D4 /* DataSource.swift */; };
 		138018FE22FD9687008FC6D4 /* FlexibleHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138018FD22FD9687008FC6D4 /* FlexibleHeightViewController.swift */; };
+		13ACC09A2499704000146DEA /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ACC0992499704000146DEA /* Header.swift */; };
+		13ACC09C2499708700146DEA /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ACC09B2499708700146DEA /* Footer.swift */; };
+		13ACC09E2499764500146DEA /* UIEdgeInsetsAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ACC09D2499764500146DEA /* UIEdgeInsetsAdditions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* FlowLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* FlowLayoutViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 		138018F522FD9004008FC6D4 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		138018F822FD90CE008FC6D4 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		138018FD22FD9687008FC6D4 /* FlexibleHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeightViewController.swift; sourceTree = "<group>"; };
+		13ACC0992499704000146DEA /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		13ACC09B2499708700146DEA /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
+		13ACC09D2499764500146DEA /* UIEdgeInsetsAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsAdditions.swift; sourceTree = "<group>"; };
 		3A0058365DE2F3AE9B9E3511 /* Pods_FlexibleRowHeightGridLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexibleRowHeightGridLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* FlexibleRowHeightGridLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexibleRowHeightGridLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				13ACC09D2499764500146DEA /* UIEdgeInsetsAdditions.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -113,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				138018F522FD9004008FC6D4 /* Cell.swift */,
+				13ACC0992499704000146DEA /* Header.swift */,
+				13ACC09B2499708700146DEA /* Footer.swift */,
 				133A835E22FDCBAC00A10591 /* Menu */,
 				138018FC22FD9661008FC6D4 /* FlexibleRowHeightGridLayout */,
 				138018FA22FD964D008FC6D4 /* UICollectionViewFlowLayout */,
@@ -412,9 +421,12 @@
 				607FACD81AFB9204008FA782 /* FlowLayoutViewController.swift in Sources */,
 				133A835D22FDC9FB00A10591 /* MenuViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				13ACC09A2499704000146DEA /* Header.swift in Sources */,
 				138018F922FD90CE008FC6D4 /* DataSource.swift in Sources */,
 				138018F622FD9004008FC6D4 /* Cell.swift in Sources */,
+				13ACC09C2499708700146DEA /* Footer.swift in Sources */,
 				138018FE22FD9687008FC6D4 /* FlexibleHeightViewController.swift in Sources */,
+				13ACC09E2499764500146DEA /* UIEdgeInsetsAdditions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,14 @@ import UIKit
     func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
                         heightForItemAt indexPath: IndexPath) -> CGFloat
     @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
-                                       referenceHeightForHeaderInSection section: Int) -> CGFloat
+                                       insetForSectionAt: Int) -> UIEdgeInsets
     @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
-                                       referenceHeightForFooterInSection section: Int) -> CGFloat
+                                       minimumLineSpacingForSectionAt: Int) -> CGFloat
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
+                                       minimumInteritemSpacingForSectionAt: Int) -> CGFloat
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
+                                       referenceSizeForHeaderInSection section: Int) -> CGSize
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
+                                       referenceSizeForFooterInSection section: Int) -> CGSize
     func numberOfColumns(for size: CGSize) -> Int
 }
