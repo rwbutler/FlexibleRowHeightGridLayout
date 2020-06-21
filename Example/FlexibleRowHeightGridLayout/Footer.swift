@@ -26,7 +26,7 @@ class Footer: UICollectionReusableView {
     
     private func addLabel() {
         label.backgroundColor = .clear
-        label.text = "FlexibleRowHeightGridLayout Section Footer"
+        label.text = "Section Footer"
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textColor = UIColor.white
         label.numberOfLines = 0

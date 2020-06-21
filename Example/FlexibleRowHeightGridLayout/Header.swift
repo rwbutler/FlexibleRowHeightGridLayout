@@ -26,7 +26,7 @@ class Header: UICollectionReusableView {
     
     private func addLabel() {
         label.backgroundColor = .clear
-        label.text = "FlexibleRowHeightGridLayout Section Header"
+        label.text = "Section Header"
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textColor = UIColor.white
         label.numberOfLines = 0
