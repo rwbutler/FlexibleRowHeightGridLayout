@@ -17,6 +17,7 @@ FlexibleRowHeightGridLayout is a `UICollectionViewLayout` which lays out self-si
 To learn more about how to use FlexibleRowHeightGridLayout take a look at the [blog post](https://medium.com/@rwbutler/accessible-uicollectionviews-with-dynamic-type-and-self-sizing-cells-b06330c14c4c) or make use of the table of contents below:
 
 - [Features](#features)
+- [## UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout](#uicollectionviewflowlayout-vs-flexiblerowheightgridlayout)
 - [Requirements](#requirements)
 - [Installation](#installation)
 	- [Cocoapods](#cocoapods)
@@ -36,6 +37,14 @@ To learn more about how to use FlexibleRowHeightGridLayout take a look at the [b
 - [x] Grid layout supporting changes in text size - will automatically re-layout with changes in `UIContentSizeCategory` ([Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically)).
 - [x] Supports self-sizing [UICollectionViewCells](https://developer.apple.com/documentation/uikit/uicollectionviewcell).
 - [x] Supports sections including headers and / or footers.
+- [x] Support for different insets and spacing per section.
+
+## UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout
+
+<div align="center">
+    <img width="300" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/uicollectionviewflowlayout.png" alt="Illustration of UICollectionViewFlowLayout">
+    <img width="300" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexiblerowheightgridlayout.png" alt="Illustration of FlexibleRowHeightGridLayout">
+</div>
 
 ## Requirements
 
