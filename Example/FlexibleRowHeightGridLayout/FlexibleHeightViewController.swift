@@ -14,8 +14,14 @@ class FlexibleHeightViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private let dataSource = DataSource()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.darkestBlue
+        collectionView.backgroundColor = UIColor.darkestBlue
         collectionView.dataSource = dataSource
         collectionView.contentInset = UIEdgeInsets(inset: 10.0)
         collectionView.register(
@@ -44,9 +50,25 @@ extension FlexibleHeightViewController: FlexibleRowHeightGridLayoutDelegate {
         layout: FlexibleRowHeightGridLayout,
         heightForItemAt indexPath: IndexPath
     ) -> CGFloat {
-        let text = dataSource.item(at: indexPath)
-        let font = UIFont.preferredFont(forTextStyle: .body)
-        return layout.textHeight(text, font: font, in: indexPath.section)
+        guard let views = Bundle.main.loadNibNamed("Cell", owner: Cell.self, options: nil),
+            let cell = views.first as? Cell else {
+                return 0
+        }
+        cell.label.text = dataSource.item(at: indexPath)
+        cell.contentView.layoutIfNeeded()
+        let size = cell.contentView.systemLayoutSizeFitting(
+            CGSize(width: layout.columnWidth(for: indexPath.section),
+                   height: UIView.noIntrinsicMetric),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .defaultLow
+        )
+        return size.height
+        /*
+         Or calculate height without inflating nib as follows:
+         let text = dataSource.item(at: indexPath)
+         let font = UIFont.preferredFont(forTextStyle: .title3)
+         return layout.textHeight(text, font: font, in: indexPath.section)
+         */
     }
     
     func collectionView(

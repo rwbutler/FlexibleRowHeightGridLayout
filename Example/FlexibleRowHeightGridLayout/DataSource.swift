@@ -54,11 +54,12 @@ extension DataSource: UICollectionViewDataSource {
             cell.label.text = text
             switch text.count {
             case 0...10:
-                cell.contentView.backgroundColor = .green
+                cell.contentView.backgroundColor = .royalBlue
+                cell.label.textColor = UIColor.white
             case 11...40:
-                cell.contentView.backgroundColor = .orange
+                cell.contentView.backgroundColor = .paleBlue
             default:
-                cell.contentView.backgroundColor = .red
+                cell.contentView.backgroundColor = .palestBlue
             }
             return cell
     }

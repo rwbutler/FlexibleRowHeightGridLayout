@@ -12,9 +12,14 @@ class FlowLayoutViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private let dataSource = DataSource()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.darkestBlue
+        collectionView.backgroundColor = UIColor.darkestBlue
         collectionView.register(
             Header.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,

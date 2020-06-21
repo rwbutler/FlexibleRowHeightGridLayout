@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="FFh-DP-SEb" customClass="Cell" customModule="FlexibleRowHeightGridLayout_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="283"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Oi-m1-hek">
+                <rect key="frame" x="0.0" y="0.0" width="260" height="283"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUA-P9-7q2">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="283"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aUA-P9-7q2" firstAttribute="top" secondItem="2Oi-m1-hek" secondAttribute="top" id="Fe8-Il-nvc"/>
+                    <constraint firstAttribute="trailing" secondItem="aUA-P9-7q2" secondAttribute="trailing" id="Nz2-l7-Gjb"/>
+                    <constraint firstAttribute="bottom" secondItem="aUA-P9-7q2" secondAttribute="bottom" id="bEL-dg-x9d"/>
+                    <constraint firstItem="aUA-P9-7q2" firstAttribute="leading" secondItem="2Oi-m1-hek" secondAttribute="leading" id="gdd-76-EmI"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="260" height="283"/>
+            <connections>
+                <outlet property="label" destination="aUA-P9-7q2" id="468-Yh-KWp"/>
+            </connections>
+            <point key="canvasLocation" x="234.78260869565219" y="111.49553571428571"/>
+        </collectionViewCell>
+    </objects>
+</document>
