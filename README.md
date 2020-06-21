@@ -11,13 +11,13 @@
 FlexibleRowHeightGridLayout is a `UICollectionViewLayout` which lays out self-sizing cells in a grid and is designed to support accessibility, in particular, [Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically). It is designed to automatically re-layout with changes in text size (`UIContentSizeCategory`) and device orientation. Row heights are flexible with this layout i.e. each row may have different height where the height of the row is determined by the tallest cell in the row so that the row height will always fit the content within the row.
 
 <div align="center">
-    <img width="414" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/layout-illustration.png" alt="Illustration of flexible row heights">
+    <img width="414" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexiblerowheightgridlayout.gif" alt="Illustration of flexible row heights">
 </div>
 
 To learn more about how to use FlexibleRowHeightGridLayout take a look at the [blog post](https://medium.com/@rwbutler/accessible-uicollectionviews-with-dynamic-type-and-self-sizing-cells-b06330c14c4c) or make use of the table of contents below:
 
 - [Features](#features)
-- [## UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout](#uicollectionviewflowlayout-vs-flexiblerowheightgridlayout)
+- [UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout](#uicollectionviewflowlayout-vs-flexiblerowheightgridlayout)
 - [Requirements](#requirements)
 - [Installation](#installation)
 	- [Cocoapods](#cocoapods)
@@ -40,6 +40,8 @@ To learn more about how to use FlexibleRowHeightGridLayout take a look at the [b
 - [x] Support for different insets and spacing per section.
 
 ## UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout
+
+For a visual comparison of the difference between UICollectionViewFlowLayout and FlexibleRowHeightGridLayout, UICollectionViewFlowLayout is shown on the left and FlexibleRowHeightGridLayout on the right.
 
 <div align="center">
     <img width="300" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/uicollectionviewflowlayout.png" alt="Illustration of UICollectionViewFlowLayout">
