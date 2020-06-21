@@ -41,7 +41,7 @@ To learn more about how to use FlexibleRowHeightGridLayout take a look at the [b
 
 ## UICollectionViewFlowLayout Vs. FlexibleRowHeightGridLayout
 
-For a visual comparison of the difference between UICollectionViewFlowLayout and FlexibleRowHeightGridLayout, UICollectionViewFlowLayout is shown on the left and FlexibleRowHeightGridLayout on the right.
+For a visual comparison of the difference between [UICollectionViewFlowLayout](https://developer.apple.com/documentation/uikit/uicollectionviewflowlayout) and FlexibleRowHeightGridLayout, UICollectionViewFlowLayout is shown on the left and FlexibleRowHeightGridLayout on the right. An implementation of both can be found as part of the [example app](https://github.com/rwbutler/FlexibleRowHeightGridLayout/tree/master/Example).
 
 <div align="center">
     <img width="300" src="https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/uicollectionviewflowlayout.png" alt="Illustration of UICollectionViewFlowLayout">
