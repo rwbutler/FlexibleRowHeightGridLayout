@@ -98,7 +98,7 @@ extension FlexibleHeightViewController: FlexibleRowHeightGridLayoutDelegate {
     }
     
     func numberOfColumns(for size: CGSize) -> Int {
-        return 5
+        return traitCollection.horizontalSizeClass == .regular ?  6 : 2
     }
     
     func collectionView(

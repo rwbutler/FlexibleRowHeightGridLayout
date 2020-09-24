@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "FlexibleRowHeightGridLayout",
     platforms: [
-        .iOS("8.0")
+        .iOS("9.0")
     ],
     products: [
         .library(
