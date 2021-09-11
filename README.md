@@ -1,6 +1,6 @@
 ![FlexibleRowHeightGridLayout](https://github.com/rwbutler/FlexibleRowHeightGridLayout/raw/master/docs/images/flexible-row-banner.png)
 
-[![CI Status](https://img.shields.io/travis/rwbutler/FlexibleRowHeightGridLayout.svg?style=flat)](https://travis-ci.org/rwbutler/FlexibleRowHeightGridLayout)
+[![Build Status](https://app.travis-ci.com/rwbutler/FlexibleRowHeightGridLayout.svg?branch=master)](https://app.travis-ci.com/rwbutler/FlexibleRowHeightGridLayout)
 [![Version](https://img.shields.io/cocoapods/v/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/FlexibleRowHeightGridLayout.svg?style=flat)](https://cocoapods.org/pods/FlexibleRowHeightGridLayout)
