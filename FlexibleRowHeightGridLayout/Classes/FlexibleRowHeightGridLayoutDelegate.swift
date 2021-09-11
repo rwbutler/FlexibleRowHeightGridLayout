@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@objc public protocol FlexibleRowHeightGridLayoutDelegate: class {
+@objc public protocol FlexibleRowHeightGridLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
                         heightForItemAt indexPath: IndexPath) -> CGFloat
     @objc optional func collectionView(_ collectionView: UICollectionView, layout: FlexibleRowHeightGridLayout,
